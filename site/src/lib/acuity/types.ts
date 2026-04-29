@@ -93,5 +93,7 @@ export interface ApiResponse<T> {
   data: T;
   cached: boolean;
   cachedAt?: string;
+  stale?: boolean;
+  fallback?: boolean;
   error?: string;
 }

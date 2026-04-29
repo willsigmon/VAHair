@@ -34,6 +34,7 @@ const acuityBaseScheduleUrl = ACUITY_BASE_SCHEDULE_URL;
   data-stylist-card
   data-calendar-id={id}
   data-stylist-key={stylistKey}
+  data-acuity-base-url={acuityBaseScheduleUrl}
 >
   <!-- Glow effect on hover - enhanced gold intensity -->
   <div class="card-glow absolute -inset-1 rounded-xl bg-gradient-to-r from-[var(--color-gold)]/0 via-[var(--color-gold)]/40 to-[var(--color-gold)]/0 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"></div>
@@ -110,7 +111,7 @@ const acuityBaseScheduleUrl = ACUITY_BASE_SCHEDULE_URL;
           loader.style.display = 'flex';
           loader.style.opacity = '1';
         }
-        const baseUrl = {JSON.stringify(acuityBaseScheduleUrl)};
+        const baseUrl = (card as HTMLElement).dataset.acuityBaseUrl || '';
         iframe.src = `${baseUrl}&calendarID=${calendarId}`;
       }
 
