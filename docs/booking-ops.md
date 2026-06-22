@@ -20,6 +20,12 @@ Copy/paste and fill brackets:
 
 Do these in order.
 
+0. SMS reminder incident triage.
+   - Acuity now requires an explicit **per-appointment SMS opt-in**. A client can have a phone number on the appointment and still not receive a text if they or the admin did not opt in for that exact booking.
+   - Client confirmations are email-only; Acuity sends at most one SMS reminder before the appointment.
+   - On the public scheduler, tell clients to check the SMS reminder permission box under the email field if they want a text reminder.
+   - For appointments staff booked on a client’s behalf, staff must only check/restore SMS opt-in after the client has given permission.
+
 1. Confirm staff notifications are configured.
    - In Acuity admin: verify “New appointment” notifications go to the correct staff emails.
    - Do a test booking and ensure Virginia and Alyssa both receive the expected notification.
@@ -27,9 +33,46 @@ Do these in order.
 2. Audit upcoming appointments.
    - Pull upcoming appointments for each stylist for the next 14-30 days.
    - Specifically look for entries with missing contact info.
+   - For SMS issues, separate online/client-booked appointments from admin-booked appointments. Admin-booked appointments are the highest-risk group for a missing SMS opt-in checkbox.
 
 3. Freeze destructive edits.
    - No deleting appointments or block-offs until exports are captured.
+
+## 2.1) SMS Reminder Recovery
+
+Use this when clients say they are not receiving Acuity text reminders.
+
+What to know:
+- Text reminders are sent to the phone number on the appointment.
+- Clients must opt in per appointment. There is no account-wide “always text this client” switch.
+- If staff booked the appointment for the client, staff can edit the appointment and check the SMS opt-in box only after the client gives permission.
+- Existing appointments with no phone number cannot receive Acuity SMS until the phone number is added.
+
+Fast admin UI fix:
+
+1. In Acuity, open **Calendar**.
+2. Click the affected appointment.
+3. Click **Edit**.
+4. Confirm the appointment has a mobile phone number.
+5. If the client gave permission, check the SMS reminder opt-in checkbox.
+6. Click **Confirm changes**.
+
+Fast API audit/remediation:
+
+```bash
+# From repo root. Load env from Vercel-pulled local env if available.
+set -a
+source site/.env.local
+set +a
+
+# Dry-run: next 30 days, admin-booked appointments only, no PII output.
+node scripts/acuity-sms-remediation.mjs
+
+# Apply only after staff confirms required SMS consent for those appointments.
+node scripts/acuity-sms-remediation.mjs --apply --consent-confirmed
+```
+
+The script intentionally defaults to admin-booked appointments because online/client-booked appointments may have intentionally declined SMS. Add `--include-client-booked` only if consent has been separately confirmed for those appointments too.
 
 ## 3) How To Audit Appointments (Fast)
 

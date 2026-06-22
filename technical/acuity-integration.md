@@ -115,9 +115,11 @@ Simple links to the booking page (opens in new tab):
 - [x] Client phone number required
 - [x] Clients can reschedule
 - [x] Clients can cancel
-- [x] SMS reminders
+- [x] SMS reminders (requires explicit per-appointment opt-in)
 - [x] Recurring appointment option
 - [x] Multiple time slot selection
+
+> SMS note: Acuity requires clients/admins to opt in each appointment before a text reminder is sent. A phone number alone is not enough, and booking confirmations are sent by email rather than SMS.
 
 ---
 
