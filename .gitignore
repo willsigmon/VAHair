@@ -3,6 +3,8 @@ node_modules/
 
 # Build output
 dist/
+.next/
+out/
 .astro/
 
 # Environment
@@ -32,3 +34,6 @@ output/
 .playwright-mcp/
 site/test-results/
 .claude/
+
+# TypeScript incremental build info
+*.tsbuildinfo

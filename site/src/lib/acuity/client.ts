@@ -22,8 +22,8 @@ let cachedAuthHeader: string | null = null;
 function getAuthHeader(): string {
   if (cachedAuthHeader) return cachedAuthHeader;
 
-  const userId = import.meta.env.ACUITY_USER_ID;
-  const apiKey = import.meta.env.ACUITY_API_KEY;
+  const userId = process.env.ACUITY_USER_ID;
+  const apiKey = process.env.ACUITY_API_KEY;
 
   if (!userId || !apiKey) {
     throw new Error('Missing ACUITY_USER_ID or ACUITY_API_KEY environment variables');
@@ -119,5 +119,5 @@ export async function getAvailableTimes(
 
 /** Check if Acuity API is configured */
 export function isAcuityConfigured(): boolean {
-  return !!(import.meta.env.ACUITY_USER_ID && import.meta.env.ACUITY_API_KEY);
+  return !!(process.env.ACUITY_USER_ID && process.env.ACUITY_API_KEY);
 }
