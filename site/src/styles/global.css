@@ -1125,3 +1125,320 @@ button:focus-visible,
     display: none !important;
   }
 }
+
+/* ================================================================
+   MIGRATED COMPONENT STYLES (formerly Astro scoped <style> blocks)
+   ================================================================ */
+
+/* ---------- Header (was Header.astro) ---------- */
+
+/* Make the header readable on the hero image without feeling heavy. */
+#header {
+  background: linear-gradient(
+    to bottom,
+    rgba(250, 247, 242, 0.78),
+    rgba(250, 247, 242, 0.55)
+  );
+  backdrop-filter: blur(12px) saturate(1.1);
+  box-shadow: 0 1px 0 rgba(45, 42, 38, 0.06);
+}
+
+#header.scrolled {
+  background: rgba(250, 247, 242, 0.96);
+  backdrop-filter: blur(12px) saturate(1.1);
+  box-shadow: 0 1px 0 rgba(45, 42, 38, 0.05);
+}
+
+#header.scrolled nav {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Capsule nav is a subtle "signature" that doesn't read as Squarespace default. */
+.nav-capsule {
+  background: rgba(250, 247, 242, 0.65);
+  border: 1px solid rgba(45, 42, 38, 0.08);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px -28px rgba(45, 42, 38, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+/* Slightly tighter header CTA so it doesn't overpower the nav capsule. */
+.btn-header-cta {
+  padding: 0.9rem 2.1rem;
+}
+
+#mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FAF7F2;
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#mobile-menu-btn.active .menu-line:first-child {
+  transform: rotate(45deg) translate(2px, 2px);
+}
+
+#mobile-menu-btn.active .menu-line:last-child {
+  transform: rotate(-45deg) translate(2px, -2px);
+}
+
+/* ---------- Book page (was book.astro scoped styles) ---------- */
+
+/* Fade up animation (book page uses its own faster timing) */
+@keyframes book-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.book-scope .animate-fade-up {
+  animation: book-fade-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Responsive Acuity iframe */
+.acuity-container {
+  position: relative;
+  min-height: 700px;
+}
+
+.acuity-iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  /* embed.js will auto-size height; these are safe fallbacks. */
+  min-height: 700px;
+  background: var(--color-cream);
+}
+
+@media (min-width: 768px) {
+  .acuity-container {
+    min-height: 900px;
+  }
+  .acuity-iframe {
+    min-height: 900px;
+  }
+}
+
+/* Stylist filter pills */
+.filter-pill {
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-cream-dark);
+  background: white;
+  color: var(--color-charcoal);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-pill:hover {
+  border-color: var(--color-gold);
+  background: var(--color-gold)/10;
+}
+
+.filter-pill.active {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: white;
+}
+
+/* Help me choose button */
+.help-choose-pill {
+  border-style: dashed;
+  background: transparent;
+}
+
+.help-choose-pill:hover {
+  background: var(--color-gold)/5;
+}
+
+/* Service choice buttons */
+.service-choice {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--color-cream);
+  border: 1.5px solid var(--color-cream-dark);
+  border-radius: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.service-choice:hover {
+  border-color: var(--color-gold);
+  background: white;
+  transform: translateX(4px);
+}
+
+.choice-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.choice-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.choice-text strong {
+  color: var(--color-charcoal);
+  font-weight: 600;
+}
+
+.choice-text small {
+  color: var(--color-taupe);
+  font-size: 0.8125rem;
+}
+
+.book-scope .hidden {
+  display: none !important;
+}
+
+/* ---------- NextSlotBadge (was NextSlotBadge.astro scoped styles) ---------- */
+
+/* Loading animation */
+.next-slot-badge .loading-dot {
+  animation: loading-bounce 1.4s infinite ease-in-out;
+}
+
+.next-slot-badge .loading-text {
+  animation: loading-fade 1.4s infinite ease-in-out;
+}
+
+@keyframes loading-bounce {
+  0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+  40% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes loading-fade {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Availability dot animations */
+.next-slot-badge .availability-dot {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.next-slot-badge .dot-core {
+  animation: dot-beat 2s infinite ease-in-out;
+}
+
+.next-slot-badge .dot-pulse {
+  animation: dot-pulse-expand 2s infinite ease-out;
+}
+
+.next-slot-badge .dot-glow {
+  animation: dot-glow 2s infinite ease-in-out;
+}
+
+@keyframes dot-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes dot-pulse-expand {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes dot-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+/* Sparkle particles */
+.next-slot-badge .sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, var(--color-gold), #fff);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.next-slot-badge .sparkle-container:not(.hidden) .sparkle {
+  animation: sparkle-fly 1s ease-out forwards;
+}
+
+.next-slot-badge .sparkle-1 {
+  left: 50%;
+  top: 50%;
+  animation-delay: 0s;
+}
+
+.next-slot-badge .sparkle-2 {
+  left: 30%;
+  top: 50%;
+  animation-delay: 0.2s;
+}
+
+.next-slot-badge .sparkle-3 {
+  left: 70%;
+  top: 50%;
+  animation-delay: 0.4s;
+}
+
+@keyframes sparkle-fly {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -150%) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -300%) scale(0.5);
+  }
+}
+
+.next-slot-badge .hidden {
+  display: none !important;
+}
+
+/* Slot text entrance animation */
+.next-slot-badge .available-state .slot-text {
+  animation: slot-text-entrance 0.5s ease-out;
+}
+
+@keyframes slot-text-entrance {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
