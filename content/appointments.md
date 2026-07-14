@@ -39,9 +39,6 @@
 - Clients can cancel appointments
 - SMS reminders enabled for all services
 
-**Special Requirements:**
-- Brazilian Blowout: Phone contact required (consultation needed before booking)
-
 ---
 
 ## Appointment Features

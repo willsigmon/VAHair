@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og';
 const SITE = {
   name: 'Virginia Page & Co. Hair Studio',
   title: 'Virginia Page & Co. Hair Studio | Rolesville, NC',
-  subtitle: 'Expert cuts, color, highlights, Brazilian blowouts, and salon care in downtown Rolesville.',
+  subtitle: 'Experienced cuts, color, highlights, styling, and salon care in downtown Rolesville.',
   eyebrow: 'Rolesville hair studio • book online',
   accent: '#C9A24A',
   bg: '#181411',

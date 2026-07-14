@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { pageMetadata } from '@/lib/seo';
 import { getHomepageStylists } from '@/lib/data/stylists';
 
@@ -17,11 +18,13 @@ export default function HomePage() {
       <section className="relative min-h-[100svh] flex items-center justify-center -mt-24">
         {/* Background */}
         <div className="absolute inset-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/images/hero.jpg"
             alt="Virginia Page & Co. Hair Studio - professional styling environment"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 hero-overlay" />
         </div>
@@ -129,9 +132,9 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <h3 className="text-2xl mb-4 group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>Treatments</h3>
-              <p className="text-[var(--color-taupe)] mb-8 leading-relaxed">Brazilian blowouts and specialty treatments for silky, frizz-free hair.</p>
-              <p className="text-3xl font-light text-[var(--color-charcoal)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>From <span className="font-medium">$325</span></p>
+              <h3 className="text-2xl mb-4 group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>Finishing Touches</h3>
+              <p className="text-[var(--color-taupe)] mb-8 leading-relaxed">Polished styling, brow tinting, and facial waxing to complete your look.</p>
+              <p className="text-3xl font-light text-[var(--color-charcoal)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>From <span className="font-medium">$20</span></p>
             </a>
           </div>
 
@@ -149,12 +152,13 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {stylists.map((stylist) => (
               <div key={stylist.id} className="group relative overflow-hidden bg-[var(--color-cream-dark)] border-glow-gold rounded-3xl">
-                <div className="aspect-[4/5]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                <div className="relative aspect-[4/5]">
+                  <Image
                     src={stylist.image}
                     alt={`Portrait of ${stylist.fullName}`}
-                    className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${stylist.imagePosition ?? ''}`.trim()}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className={`object-cover transition-transform duration-700 group-hover:scale-105 ${stylist.imagePosition ?? ''}`.trim()}
                   />
                 </div>
                 {/* Gradient overlay for text legibility */}

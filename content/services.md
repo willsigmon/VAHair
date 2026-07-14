@@ -33,7 +33,6 @@
 
 | Service | Price |
 |---------|-------|
-| Brazilian Blowout | $325+ |
 | Eyebrow Tint | $45 |
 | Eyebrow Wax | $25 |
 | Lip Wax | $25 |
@@ -44,7 +43,7 @@
 ## Acuity Booking Categories
 
 Services are organized in Acuity under these categories:
-1. **Color Services** (8 options, $75-$325)
+1. **Color Services** (starting at $75)
 2. **Haircuts** (5 options, $25-$50)
 3. **Waxing** (4 options, $20-$45)
 
@@ -52,7 +51,6 @@ Services are organized in Acuity under these categories:
 
 ## Service Notes
 
-- **Brazilian Blowout:** Phone contact required for booking (complex consultation needed)
 - **Color Services:** Time for hair cutting included in time allotment for color & foil services
 - **Pricing Disclaimer:** Consultation may adjust final pricing based on hair length, thickness, condition
 

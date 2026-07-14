@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '/about', label: 'About' },
@@ -54,10 +55,13 @@ export default function Header() {
         <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="group relative z-10" data-magnetic="0.2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/images/logo-header.png"
               alt="Virginia Page & Co. Hair Studio"
+              width={400}
+              height={400}
+              priority
+              sizes="(min-width: 1024px) 128px, (min-width: 768px) 96px, 64px"
               className="h-16 md:h-24 lg:h-32 w-auto"
             />
           </a>

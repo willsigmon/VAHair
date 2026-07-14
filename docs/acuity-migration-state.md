@@ -3,7 +3,7 @@
 **Last Updated:** 2026-02-02
 **Status:** IN PROGRESS
 
-## Completed Services (3 of 12)
+## Completed Services (3 of 11)
 
 | # | Service | Duration | Price | Stylists | Status |
 |---|---------|----------|-------|----------|--------|
@@ -11,7 +11,7 @@
 | 2 | Blowout/Style | 45 min | $45 | All 3 | ✅ Created |
 | 3 | Root Touch Up | 60 min | $85 | Virginia + Alyssa | ✅ Created |
 
-## Remaining Services (9 of 12)
+## Remaining Services (8 of 11)
 
 | # | Service | Duration | Price | Stylists |
 |---|---------|----------|-------|----------|
@@ -20,10 +20,9 @@
 | 6 | Full Highlights | 120 min | $165 | Virginia + Alyssa |
 | 7 | Balayage | 150 min | $195 | Alyssa only |
 | 8 | Glaze/Gloss | 30 min | $40 | All 3 |
-| 9 | Brazilian Blowout | 120 min | $300 | Virginia only |
-| 10 | Deep Conditioning | 30 min | $35 | All 3 |
-| 11 | Brow Wax | 15 min | $15 | All 3 |
-| 12 | Lip Wax | 15 min | $10 | All 3 |
+| 9 | Deep Conditioning | 30 min | $35 | All 3 |
+| 10 | Brow Wax | 15 min | $15 | All 3 |
+| 11 | Lip Wax | 15 min | $10 | All 3 |
 
 ## Already Existing Services
 

@@ -81,7 +81,6 @@ Recreate all services and **assign to correct calendars**:
 - [ ] Glaze (Toner) - $85
 
 **Extras/Waxing** (Virginia + Kim):
-- [ ] Brazilian Blowout - $325+
 - [ ] Eyebrow Tint - $45
 - [ ] Eyebrow Wax - $25
 - [ ] Lip Wax - $25

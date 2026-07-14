@@ -44,11 +44,11 @@ const RECOMMENDATIONS: Record<string, Recommendation> = {
     icon: '💫',
     reason: 'Owner & master stylist for your full transformation',
   },
-  treatment: {
+  extras: {
     name: 'Virginia',
     key: 'virginia',
     icon: '✨',
-    reason: 'Expert in Brazilian blowouts and treatments',
+    reason: 'An experienced choice for brow tinting and facial waxing',
   },
 };
 
@@ -72,10 +72,10 @@ const SERVICE_CHOICES = [
     subtitle: 'Full transformation',
   },
   {
-    service: 'treatment',
+    service: 'extras',
     icon: '✨',
-    title: 'Treatment',
-    subtitle: 'Brazilian blowout, deep conditioning',
+    title: 'Waxing or Brow Tint',
+    subtitle: 'Eyebrow tinting and facial waxing',
   },
 ];
 

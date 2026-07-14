@@ -26,6 +26,10 @@ const corsHeaders = {
   'X-Content-Type-Options': 'nosniff',
 };
 
+// Services intentionally removed from the public website remain excluded even
+// if an old Acuity appointment type is still active during operational cleanup.
+const excludedServiceNames = new Set(['brazilian blowout']);
+
 // Handle CORS preflight
 export function OPTIONS() {
   return new Response(null, { status: 204, headers: corsHeaders });
@@ -60,7 +64,6 @@ const fallbackServices: ServiceCategory[] = [
     name: 'Extras',
     slug: 'extras',
     services: [
-      { id: 12, name: 'Brazilian Blowout', price: '$325+', duration: 120, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
       { id: 13, name: 'Eyebrow Tint', price: '$45', duration: 15, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
       { id: 14, name: 'Eyebrow Wax', price: '$20', duration: 15, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
       { id: 15, name: 'Lip Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: acuityBookingUrlForCategory('Extras') },
@@ -113,7 +116,12 @@ export async function GET(request: Request) {
         const appointmentTypes = await getAppointmentTypes();
         // Filter to active, public services only
         const activeServices = appointmentTypes
-          .filter((apt) => apt.active && !apt.private)
+          .filter(
+            (apt) =>
+              apt.active &&
+              !apt.private &&
+              !excludedServiceNames.has(apt.name.trim().toLowerCase())
+          )
           .map(transformAppointmentType);
         return groupServicesByCategory(activeServices);
       },

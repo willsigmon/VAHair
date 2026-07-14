@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { pageMetadata } from '@/lib/seo';
 import SmartBookButton from '@/components/booking/SmartBookButton';
 
@@ -33,12 +34,13 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Image */}
-            <div className="img-frame aspect-square bg-[var(--color-cream-dark)]" data-tilt="5" data-reveal="left">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="img-frame relative aspect-square bg-[var(--color-cream-dark)]" data-tilt="5" data-reveal="left">
+              <Image
                 src="/images/virginia.jpg"
                 alt="Virginia Page Watkins"
-                className="w-full h-full object-cover object-[center_20%]"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-[center_20%]"
               />
             </div>
 
@@ -100,12 +102,13 @@ export default function AboutPage() {
             </div>
 
             {/* Image */}
-            <div className="img-frame aspect-square bg-[var(--color-blush)] lg:order-2 order-1" data-tilt="5" data-reveal="right">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="img-frame relative aspect-square bg-[var(--color-blush)] lg:order-2 order-1" data-tilt="5" data-reveal="right">
+              <Image
                 src="/images/kim.jpg"
                 alt="Kim Latham"
-                className="w-full h-full object-cover object-[center_25%]"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-[center_25%]"
               />
             </div>
           </div>
@@ -117,12 +120,13 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Image */}
-            <div className="img-frame aspect-square bg-[var(--color-cream-dark)]" data-tilt="5" data-reveal="left">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="img-frame relative aspect-square bg-[var(--color-cream-dark)]" data-tilt="5" data-reveal="left">
+              <Image
                 src="/images/alyssa.jpg"
                 alt="Alyssa Valdes at Virginia Page & Co."
-                className="w-full h-full object-cover object-[center_15%]"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-[center_15%]"
               />
             </div>
 

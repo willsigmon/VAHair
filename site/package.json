@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/submit-indexnow.mjs",
     "start": "next start",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "submit:indexnow": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

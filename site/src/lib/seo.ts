@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const SITE_URL = 'https://vahair.studio';
 export const SITE_NAME = 'Virginia Page & Co. Hair Studio';
 export const DEFAULT_DESCRIPTION =
-  'Expert hair services in downtown Rolesville, NC. Cuts, color, highlights, Brazilian blowouts & more. Book online today.';
+  'Experienced hair stylists in downtown Rolesville, NC offering cuts, color, highlights, styling, and facial waxing. View pricing and book online.';
 
 /**
  * Builds per-page metadata mirroring the old Astro Layout head:
@@ -28,6 +28,7 @@ export function pageMetadata(
       type: 'website',
       url: path,
       siteName: SITE_NAME,
+      locale: 'en_US',
       images: [
         {
           url: ogImageURL.href,
@@ -42,6 +43,17 @@ export function pageMetadata(
       title,
       description,
       images: [{ url: ogImageURL.href, alt: `${title} social preview` }],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
     },
   };
 }

@@ -5,7 +5,7 @@ import { acuityBookingUrlForCalendar, acuityBookingUrlForCategory } from '@/lib/
 export const metadata: Metadata = pageMetadata(
   'Hair Services & Pricing | Virginia Page & Co. Hair Studio',
   '/services',
-  'Haircuts from $30, color from $95, Brazilian blowouts & more. View our full service menu and pricing.'
+  'View starting prices for haircuts, color, highlights, styling, treatments, and facial waxing in downtown Rolesville, NC.'
 );
 
 const haircuts = [
@@ -26,7 +26,6 @@ const colorServices = [
 ];
 
 const extras = [
-  { name: 'Brazilian Blowout', price: '$325+' },
   { name: 'Eyebrow Tint', price: '$45' },
   { name: 'Eyebrow Wax', price: '$20' },
   { name: 'Lip Wax', price: '$25' },

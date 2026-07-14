@@ -51,7 +51,7 @@ export default function TermsPage() {
             <h2 className="text-2xl mb-4" style={{ fontFamily: 'var(--font-display)' }}>Service Disclaimers</h2>
             <ul className="list-disc pl-6 space-y-2 text-[--color-taupe]">
               <li>Color results may vary based on your hair&apos;s current condition and history</li>
-              <li>Chemical services (color, Brazilian blowout) require a consultation for accurate pricing</li>
+              <li>Color and other consultation-based services require an assessment for accurate pricing</li>
               <li>We may recommend alternative services if the requested service could damage your hair</li>
             </ul>
           </div>
