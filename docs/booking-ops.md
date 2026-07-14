@@ -74,6 +74,18 @@ node scripts/acuity-sms-remediation.mjs --apply --consent-confirmed
 
 The script intentionally defaults to admin-booked appointments because online/client-booked appointments may have intentionally declined SMS. Add `--include-client-booked` only if consent has been separately confirmed for those appointments too.
 
+## 2.2) Retiring a Public Service
+
+1. In Acuity admin, open **Appointment Types**, edit the retired service, then make it private or delete it.
+2. Existing appointments remain on the calendar; verify their reminder behavior before deleting an appointment type.
+3. Until admin removal is confirmed, keep every website scheduler URL constrained by the allowlist in `site/src/lib/acuity/constants.ts`.
+4. When adding a legitimate new service, add its Acuity appointment type ID to `PUBLIC_APPOINTMENT_TYPE_IDS`; otherwise it will not appear through website booking links.
+5. Verify both surfaces:
+   - the default public Acuity owner page no longer lists the retired service;
+   - every Acuity URL rendered by `/`, `/about`, `/services`, and `/book` includes only approved appointment types.
+
+The current Acuity plan rejects API administration with `403`, so service retirement must be completed in the Acuity admin UI unless API access is later enabled.
+
 ## 3) How To Audit Appointments (Fast)
 
 ### Option A: Acuity UI export
