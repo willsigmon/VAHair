@@ -63,11 +63,11 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center" data-stagger="0.15">
             <div className="group">
-              <p className="text-4xl md:text-5xl font-light mb-2 text-[var(--color-cream)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}><span data-counter="40" data-counter-duration="2000">0</span><span className="text-[var(--color-gold)]">+</span></p>
+              <p className="text-4xl md:text-5xl font-light mb-2 text-[var(--color-cream)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}><span>40</span><span className="text-[var(--color-gold)]">+</span></p>
               <p className="text-xs text-[var(--color-cream)]/60 uppercase tracking-widest">Years Combined<br className="hidden md:block" /> Experience</p>
             </div>
             <div className="group">
-              <p className="text-4xl md:text-5xl font-light mb-2 text-[var(--color-cream)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}><span data-counter="3" data-counter-duration="1200">0</span></p>
+              <p className="text-4xl md:text-5xl font-light mb-2 text-[var(--color-cream)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}><span>3</span></p>
               <p className="text-xs text-[var(--color-cream)]/60 uppercase tracking-widest">Expert<br className="hidden md:block" /> Stylists</p>
             </div>
             <div className="group">
