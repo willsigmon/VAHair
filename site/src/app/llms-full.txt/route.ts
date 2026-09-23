@@ -1,9 +1,9 @@
-import { llmsSummary } from '@/lib/agent-text';
+import { llmsFull } from '@/lib/agent-text';
 
 export const dynamic = 'force-static';
 
 export function GET() {
-  return new Response(llmsSummary(), {
+  return new Response(llmsFull(), {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'public, max-age=3600, s-maxage=86400',

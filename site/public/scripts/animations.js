@@ -606,15 +606,17 @@ class LazyBackground {
 // ============================================
 // INIT ALL
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+// Next.js injects this file with strategy="afterInteractive", which runs after
+// DOMContentLoaded has already fired, so boot immediately when the DOM is ready.
+const initAnimations = () => {
   // Core animations
   new ScrollReveal();
   new TextSplit();
   new ImageReveal();
   new StaggerChildren();
 
-  // Interactive effects
-  new CursorFollower();
+  // Interactive effects (CursorFollower stays off: .cursor-follower has no styles,
+  // so it would only run an invisible animation loop.)
   new MagneticButtons();
   new TiltEffect();
 
@@ -630,7 +632,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Ambient effects
   new FloatingParticles();
-});
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAnimations);
+} else {
+  initAnimations();
+}
 
 // ============================================
 // LENIS SMOOTH SCROLL (if loaded)

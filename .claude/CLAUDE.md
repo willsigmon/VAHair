@@ -1,10 +1,11 @@
 # VA Hair
 
-Website for a Virginia-based hair salon/stylist business.
+Website for Virginia Page & Co. Hair Studio, a salon in Rolesville, NC (vahair.studio). Booking runs through Acuity.
 
 ## Tech Stack
-- Astro 5, Tailwind CSS 4
-- Vercel hosting
+- Next.js 16 (App Router) and Tailwind CSS 4, in `site/`
+- Vercel hosting (project `vahair`)
+- Agent-facing files: `/llms.txt`, `/llms-full.txt`, `/.well-known/mcp.json` and `<WebMcpProvider />`, all built from `site/src/lib/salon.ts`
 
 ## User Preferences
 

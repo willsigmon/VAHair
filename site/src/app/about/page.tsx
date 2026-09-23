@@ -200,7 +200,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <p className="text-sm text-[var(--color-taupe)]/70 italic mb-10">
+              <p className="text-sm text-[var(--color-taupe)] italic mb-10">
                 Note: Alyssa specializes in adult women&apos;s hair services only.
               </p>
 
