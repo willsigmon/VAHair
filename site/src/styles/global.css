@@ -9,8 +9,8 @@
   --color-charcoal-light: #4A4541;
   --color-gold: #C4A962;
   --color-gold-light: #D4C08A;
-  --color-gold-dark: #A08840;
-  --color-taupe: #8B8178;
+  --color-gold-dark: #76632B; /* darkened from #A08840: small gold labels now pass WCAG AA on cream */
+  --color-taupe: #6B6259; /* darkened from #8B8178 to pass WCAG AA (4.5:1) on cream, cream-dark and blush */
   --color-blush: #E8DED5;
 
   /* Spacing */
@@ -33,6 +33,16 @@ body {
   font-weight: 400;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* Taupe is tuned for light backgrounds; lighten it inside charcoal sections so text there also passes WCAG AA. */
+[class*="bg-[var(--color-charcoal)]"] {
+  --color-taupe: #A39A91;
+}
+
+/* Side-entering reveals start 60px off-axis; clip them so phones never scroll sideways. */
+main {
+  overflow-x: clip;
 }
 
 /* Hero background overlay:
@@ -1254,8 +1264,8 @@ button:focus-visible,
 }
 
 .filter-pill.active {
-  background: var(--color-gold);
-  border-color: var(--color-gold);
+  background: var(--color-gold-dark);
+  border-color: var(--color-gold-dark);
   color: white;
 }
 

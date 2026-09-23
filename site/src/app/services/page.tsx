@@ -116,7 +116,7 @@ export default function ServicesPage() {
       <section id="haircuts" className="py-24 px-6 scroll-mt-24">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-6 mb-12" data-reveal>
-            <span className="text-6xl font-light text-[var(--color-gold)]" style={{ fontFamily: 'var(--font-display)' }}>01</span>
+            <span aria-hidden="true" className="text-6xl font-light text-[var(--color-gold-dark)]" style={{ fontFamily: 'var(--font-display)' }}>01</span>
             <div>
               <h2 className="text-3xl" style={{ fontFamily: 'var(--font-display)' }}>Haircuts</h2>
               <p className="text-[var(--color-taupe)]">Precision cuts tailored to you</p>
@@ -145,7 +145,7 @@ export default function ServicesPage() {
       <section id="color" className="py-24 px-6 bg-[var(--color-cream-dark)] scroll-mt-24">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-6 mb-12" data-reveal>
-            <span className="text-6xl font-light text-[var(--color-gold)]" style={{ fontFamily: 'var(--font-display)' }}>02</span>
+            <span aria-hidden="true" className="text-6xl font-light text-[var(--color-gold-dark)]" style={{ fontFamily: 'var(--font-display)' }}>02</span>
             <div>
               <h2 className="text-3xl" style={{ fontFamily: 'var(--font-display)' }}>Hair Color</h2>
               <p className="text-[var(--color-taupe)]">From subtle to stunning</p>
@@ -178,7 +178,7 @@ export default function ServicesPage() {
       <section id="extras" className="py-24 px-6 scroll-mt-24">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-6 mb-12" data-reveal>
-            <span className="text-6xl font-light text-[var(--color-gold)]" style={{ fontFamily: 'var(--font-display)' }}>03</span>
+            <span aria-hidden="true" className="text-6xl font-light text-[var(--color-gold-dark)]" style={{ fontFamily: 'var(--font-display)' }}>03</span>
             <div>
               <h2 className="text-3xl" style={{ fontFamily: 'var(--font-display)' }}>Extras</h2>
               <p className="text-[var(--color-taupe)]">Treatments & finishing touches</p>
@@ -207,7 +207,7 @@ export default function ServicesPage() {
       <section id="alyssa" className="py-24 px-6 bg-[var(--color-cream-dark)] scroll-mt-24">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-6 mb-6" data-reveal>
-            <span className="text-6xl font-light text-[var(--color-gold)]" style={{ fontFamily: 'var(--font-display)' }}>04</span>
+            <span aria-hidden="true" className="text-6xl font-light text-[var(--color-gold-dark)]" style={{ fontFamily: 'var(--font-display)' }}>04</span>
             <div>
               <h2 className="text-3xl" style={{ fontFamily: 'var(--font-display)' }}>Alyssa&apos;s Services</h2>
               <p className="text-[var(--color-taupe)]">Lived-in color & dimensional blonding specialist</p>

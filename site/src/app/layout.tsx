@@ -8,6 +8,8 @@ import '../styles/global.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { SITE_NAME, SITE_URL, DEFAULT_DESCRIPTION } from '@/lib/seo';
+import { SALON } from '@/lib/salon';
+import WebMcpProvider from '@/components/agent/WebMcpProvider';
 
 const displayFont = Cormorant_Garamond({
   subsets: ['latin'],
@@ -52,42 +54,39 @@ const structuredData = {
       '@type': ['HairSalon', 'LocalBusiness'],
       '@id': `${SITE_URL}/#salon`,
       name: SITE_NAME,
-      alternateName: 'Virginia & Co. Hair Studio',
+      alternateName: SALON.alternateName,
       url: SITE_URL,
       logo: `${SITE_URL}/images/logo-header.png`,
       image: [`${SITE_URL}/images/hero.jpg`, `${SITE_URL}/images/salon.jpg`],
       description: DEFAULT_DESCRIPTION,
-      telephone: '+1-919-671-8353',
-      email: 'vacohairstudio@gmail.com',
+      telephone: SALON.phoneE164,
+      email: SALON.email,
       priceRange: '$$',
       currenciesAccepted: 'USD',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '104 South Main Street',
-        addressLocality: 'Rolesville',
-        addressRegion: 'NC',
-        postalCode: '27571',
-        addressCountry: 'US',
+        streetAddress: SALON.address.street,
+        addressLocality: SALON.address.city,
+        addressRegion: SALON.address.region,
+        postalCode: SALON.address.postalCode,
+        addressCountry: SALON.address.country,
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 35.9232013,
-        longitude: -78.4577758,
+        latitude: SALON.geo.latitude,
+        longitude: SALON.geo.longitude,
       },
       areaServed: [
         { '@type': 'City', name: 'Rolesville' },
         { '@type': 'AdministrativeArea', name: 'Wake County' },
       ],
-      sameAs: [
-        'https://instagram.com/vahairco',
-        'https://facebook.com/vahairco',
-      ],
-      openingHoursSpecification: [
-        { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday', opens: '09:30', closes: '17:00' },
-        { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Wednesday', opens: '09:30', closes: '17:00' },
-        { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '09:30', closes: '16:00' },
-        { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '09:30', closes: '14:00' },
-      ],
+      sameAs: [...SALON.social],
+      openingHoursSpecification: SALON.hours.map((h) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: h.day,
+        opens: h.opens,
+        closes: h.closes,
+      })),
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Salon services',
@@ -147,6 +146,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Script src="/scripts/animations.js" strategy="afterInteractive" />
         <Script src="/scripts/haptics.js" strategy="afterInteractive" />
 
+        <WebMcpProvider />
         <Analytics />
         <SpeedInsights />
       </body>
