@@ -1,13 +1,13 @@
 # Virginia & Co. Hair Studio - Site Documentation
 
-> Complete extraction and documentation for rebuilding vahair.studio off Squarespace
+> Source and documentation for vahair.studio. The live site is the Next.js app in `site/`.
 
 ## Quick Reference
 
 | Item | Value |
 |------|-------|
-| **Current URL** | https://www.vahair.studio/ |
-| **Platform** | Squarespace (migrating away) |
+| **Current URL** | https://vahair.studio/ |
+| **Platform** | Next.js 16 on Vercel (`site/`), migrated off Squarespace in 2026 |
 | **Booking System** | Acuity Scheduling (standalone, owner=38274584) |
 | **Location** | 104 South Main Street, Rolesville, NC 27571 |
 | **Phone** | (919) 671-8353 |
@@ -18,6 +18,7 @@
 ```
 vahair/
 ├── README.md              # This file
+├── site/                  # Next.js app (the live website)
 ├── content/
 │   ├── homepage.md        # Homepage content & structure
 │   ├── about.md           # About page - bios, story
@@ -25,8 +26,8 @@ vahair/
 │   ├── contact.md         # Contact info & hours
 │   └── appointments.md    # Booking info & policies
 ├── docs/
-│   ├── ACUITY-MIGRATION.md         # Migration checklist (Squarespace -> standalone)
-│   ├── acuity-migration-state.md   # Appointment-type migration state
+│   ├── ACUITY-MIGRATION.md         # Historical: Squarespace -> standalone migration
+│   ├── acuity-migration-state.md   # Historical: Feb 2026 appointment-type setup
 │   └── booking-ops.md              # Runbook: audits, mixups, reconciliation
 ├── scripts/
 │   └── acuity-audit-appointments.mjs  # Local audit script (prints/exports booked appts)

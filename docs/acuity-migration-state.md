@@ -1,7 +1,13 @@
 # Acuity Appointment Types Migration State
 
 **Last Updated:** 2026-02-02
-**Status:** IN PROGRESS
+**Status:** SUPERSEDED (see note below)
+
+> **Historical, no longer current.** This tracked the February 2026 appointment-type
+> setup and was never updated after it. The live list of services offered for online
+> booking is `PUBLIC_APPOINTMENT_TYPE_IDS` in `site/src/lib/acuity/constants.ts`
+> (last audited against the public scheduler on 2026-07-14), and public prices are on
+> `site/src/app/services/page.tsx`. Calendar IDs below are still accurate.
 
 ## Completed Services (3 of 11)
 
