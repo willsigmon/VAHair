@@ -48,12 +48,6 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 text-[var(--color-cream)]/80">
-          <div className="w-px h-16 bg-gradient-to-b from-current to-transparent mx-auto mb-2" />
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-        </div>
       </section>
 
       {/* Social Proof: a single printed line, not a stat grid */}
@@ -105,7 +99,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stylists: staggered portraits, names set beneath like a program */}
+      {/* Stylists: three equal portraits, names set beneath like a program */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className="display-md mb-16 lg:mb-20">Book with your stylist</h2>
@@ -117,7 +111,7 @@ export default function HomePage() {
                     src={stylist.image}
                     alt={`Portrait of ${stylist.fullName}`}
                     fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    sizes="(min-width: 768px) 33vw, 100vw"
                     className={`object-cover ${stylist.imagePosition ?? ''}`.trim()}
                   />
                 </div>
@@ -128,9 +122,9 @@ export default function HomePage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Book appointment with ${stylist.name} (opens in new window)`}
-                    className="text-link"
+                    className="btn btn-outline stylist-book"
                   >
-                    Book {stylist.name}
+                    Book with {stylist.name}
                   </a>
                 </div>
               </article>
