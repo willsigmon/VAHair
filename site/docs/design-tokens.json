@@ -1,0 +1,12 @@
+{
+  "typography": { "display": "Cormorant Garamond", "body": "Outfit", "scale": "fluid editorial headings; 1.25 body scale" },
+  "color": {
+    "model": "OKLCH",
+    "palette_strategy": "60% cream, 30% charcoal and warm surfaces, 10% muted gold; blush accent",
+    "tokens": { "bg": "oklch(97.5% 0.009 82)", "surface": "oklch(94.5% 0.012 78)", "ink": "oklch(29% 0.010 70)", "muted": "#6B6259 (existing AA contrast correction retained)", "accent": "oklch(72% 0.075 84)", "signal": "oklch(61% 0.095 25)" }
+  },
+  "spacing": "8pt grid: xs 8, sm 16, md 24, lg 32, xl 48, section 64–128",
+  "radius": "soft: 6px controls, restrained editorial planes",
+  "motion": { "ease": "cubic-bezier(0.16, 1, 0.3, 1)", "feedback": "180ms", "reveal": "600ms", "reduced": "none" },
+  "texture": "natural photographic grain"
+}

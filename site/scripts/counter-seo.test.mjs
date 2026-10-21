@@ -60,3 +60,30 @@ test('booking embed retains the approved appointment allowlist and owner', async
   assert.ok(expected.length > 0);
   assert.deepEqual(url.searchParams.getAll('appointmentType[]'), expected);
 });
+
+for (const path of ['/faq', '/services']) {
+  test(`${path} FAQ schema matches visible answers`, async () => {
+    const page = await pageHtml(path);
+    const schemas = [...page.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
+    const faq = schemas.find((schema) => schema['@type'] === 'FAQPage');
+    assert.ok(faq?.mainEntity.length);
+    const decode = (value) => value.replaceAll('&#x27;', "'").replaceAll('&amp;', '&').replaceAll('&quot;', '"');
+    const visible = decode(page.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<[^>]+>/g, ' '));
+    for (const item of faq.mainEntity) {
+      assert.ok(visible.includes(item.name), item.name);
+      assert.ok(visible.includes(item.acceptedAnswer.text), 'Visible answer matches schema');
+    }
+  });
+}
+
+test('HairSalon schema uses the repository address, phone and fixed weekday hours', async () => {
+  const page = await pageHtml();
+  const schemas = [...page.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
+  const salon = schemas.flatMap((schema) => schema['@graph'] || []).find((item) => item['@type']?.includes('HairSalon'));
+  assert.equal(salon.telephone, '+1-919-671-8353');
+  assert.equal(salon.address.streetAddress, '104 South Main Street');
+  assert.equal(salon.address.postalCode, '27571');
+  assert.deepEqual(salon.openingHoursSpecification.map(({ dayOfWeek, opens, closes }) => [dayOfWeek, opens, closes]), [
+    ['Tuesday', '09:30', '17:00'], ['Wednesday', '09:30', '17:00'], ['Thursday', '09:30', '16:00'], ['Friday', '09:30', '14:00'],
+  ]);
+});

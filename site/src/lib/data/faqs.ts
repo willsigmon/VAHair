@@ -1,50 +1,51 @@
-/**
- * FAQ entries shown on /faq, used for its FAQPage schema, and repeated in /llms-full.txt.
- */
-export interface Faq {
-  question: string;
-  answer: string;
-}
+import { SALON, SALON_ADDRESS_LINE } from '@/lib/salon';
+
+export interface Faq { question: string; answer: string; }
+
+/** Answers shared by the visible service menu, schema, and machine-readable guide. */
+export const SERVICE_FAQS: readonly Faq[] = [
+  {
+    question: 'Are the listed prices final?',
+    answer: 'Prices are starting prices and are subject to consultation before service. Final pricing may vary with hair length, thickness, and condition. Listed prices may differ from the booking system.',
+  },
+  {
+    question: 'Does a color service include a haircut or blowdry?',
+    answer: 'The standard Hair Color menu does not include a haircut or blowdry; these can be added separately. Alyssa’s menu lists the combinations with a cut or blowdry in each service name.',
+  },
+  {
+    question: 'Do new hair extensions require a consultation?',
+    answer: 'New extension installs require a consultation first. Alyssa’s extension consultation is listed at $30.',
+  },
+  {
+    question: 'Do you offer children’s haircuts?',
+    answer: 'The Haircuts menu includes a Children’s Cut for ages 10 and under, listed at $30. Alyssa’s services are for adult women only.',
+  },
+];
 
 export const FAQS: readonly Faq[] = [
   {
     question: 'How do I book an appointment?',
-    answer: "You can book online through our website by clicking 'Book Now' or visiting our booking page. You can also call us at (919) 671-8353.",
+    answer: `Choose Book Now, select a service and stylist, then an available date and time. You can also call or text ${SALON.phoneDisplay}.`,
   },
   {
-    question: 'What is your cancellation policy?',
-    answer: 'We kindly ask for at least 24 hours notice if you need to cancel or reschedule. You can use the link in your confirmation email to manage your appointment.',
+    question: 'Who can I book with?',
+    answer: 'You can choose Virginia Page Watkins, Kim Latham, or Alyssa Valdes in the online scheduler.',
   },
   {
-    question: 'Do you accept walk-ins?',
-    answer: 'While we primarily work by appointment to ensure quality time with each client, we do accommodate walk-ins when possible. Call ahead to check availability.',
+    question: 'Where is the studio?',
+    answer: `${SALON.name} is at ${SALON_ADDRESS_LINE}.`,
   },
   {
-    question: 'What forms of payment do you accept?',
-    answer: 'We accept all major credit cards, debit cards, and cash.',
+    question: 'What are the studio’s hours?',
+    answer: 'Tuesday and Wednesday: 9:30 AM–5 PM. Thursday: 9:30 AM–4 PM. Friday: 9:30 AM–2 PM. Saturdays alternate with Alyssa, 9 AM–5 PM. Closed Sunday and Monday. Check the scheduler for available Saturday appointments.',
   },
   {
-    question: 'How long should I expect my appointment to take?',
-    answer: 'Appointment times vary by service. Haircuts typically take 30-60 minutes, while color services can range from 1.5 to 3+ hours depending on the treatment.',
+    question: 'How can I cancel or reschedule?',
+    answer: `Use the link in your confirmation email to manage your appointment. For help, call ${SALON.phoneDisplay}.`,
   },
   {
-    question: 'Should I wash my hair before my appointment?',
-    answer: "For haircuts, clean hair is fine. For color services, it's actually better to come with hair that hasn't been washed for 1-2 days, as natural oils can help protect your scalp.",
+    question: 'Can I receive a text reminder?',
+    answer: 'Select Acuity’s SMS reminder permission box when entering your information. A phone number alone does not opt you in. Booking confirmations are sent by email.',
   },
-  {
-    question: 'Do you offer consultations?',
-    answer: 'Yes! We offer consultations for color services ($45) and extensions ($30). This helps us understand your goals and recommend the best approach. Book a consultation online or call us.',
-  },
-  {
-    question: 'What products do you use and sell?',
-    answer: 'We use and retail professional-grade products. Ask your stylist for personalized product recommendations for your hair type.',
-  },
-  {
-    question: 'Is parking available?',
-    answer: 'Yes, free street parking is available on South Main Street and in the surrounding downtown Rolesville area.',
-  },
-  {
-    question: 'Do you offer services for children?',
-    answer: "Yes! We offer children's haircuts for ages 10 and under. We recommend booking during quieter times for a more relaxed experience.",
-  },
+  ...SERVICE_FAQS,
 ];

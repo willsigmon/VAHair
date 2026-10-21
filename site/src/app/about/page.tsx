@@ -15,9 +15,8 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-20 pb-28 px-6 relative overflow-hidden" data-particles="6" data-particle-color="rgba(196, 169, 98, 0.15)">
+      <section className="pt-20 pb-28 px-6 relative overflow-hidden">
         {/* Ambient decoration */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[var(--color-gold)]/5 blur-3xl" />
         <div className="max-w-4xl mx-auto text-center relative" data-reveal>
           <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-4 block">Our Story</span>
           <h1 className="display-lg mb-8" style={{ fontFamily: 'var(--font-display)' }}>
@@ -34,7 +33,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Image */}
-            <div className="img-frame relative aspect-square bg-[var(--color-cream-dark)]" data-tilt="5" data-reveal="left">
+            <div className="img-frame relative aspect-square bg-[var(--color-cream-dark)]" data-reveal="left">
               <Image
                 src="/images/virginia.jpg"
                 alt="Virginia Page Watkins"
@@ -102,7 +101,7 @@ export default function AboutPage() {
             </div>
 
             {/* Image */}
-            <div className="img-frame relative aspect-square bg-[var(--color-blush)] lg:order-2 order-1" data-tilt="5" data-reveal="right">
+            <div className="img-frame relative aspect-square bg-[var(--color-blush)] lg:order-2 order-1" data-reveal="right">
               <Image
                 src="/images/kim.jpg"
                 alt="Kim Latham"
@@ -120,7 +119,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Image */}
-            <div className="img-frame relative aspect-square bg-[var(--color-cream-dark)]" data-tilt="5" data-reveal="left">
+            <div className="img-frame relative aspect-square bg-[var(--color-cream-dark)]" data-reveal="left">
               <Image
                 src="/images/alyssa.jpg"
                 alt="Alyssa Valdes at Virginia Page & Co."
@@ -213,10 +212,8 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story */}
-      <section className="py-32 px-6 bg-[var(--color-cream-dark)] relative overflow-hidden" data-particles="8" data-particle-color="rgba(196, 169, 98, 0.18)">
+      <section className="py-32 px-6 bg-[var(--color-cream-dark)] relative overflow-hidden">
         {/* Ambient decoration */}
-        <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-[var(--color-gold)]/5 blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-64 h-64 rounded-full bg-[var(--color-gold)]/5 blur-3xl" />
         <div className="max-w-4xl mx-auto text-center relative" data-reveal>
           <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-4 block">Since 2020</span>
           <h2 className="display-md mb-10" style={{ fontFamily: 'var(--font-display)' }}>
@@ -237,7 +234,6 @@ export default function AboutPage() {
       {/* Quote Banner */}
       <section className="py-28 px-6 bg-[var(--color-charcoal)] text-[var(--color-cream)] relative overflow-hidden">
         {/* Ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[var(--color-gold)]/10 blur-3xl" />
         <div className="max-w-4xl mx-auto text-center relative">
           <div className="divider mx-auto mb-10" style={{ background: 'linear-gradient(90deg, var(--color-gold), transparent)' }} />
           <blockquote>

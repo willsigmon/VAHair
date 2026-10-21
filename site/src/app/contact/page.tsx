@@ -5,7 +5,7 @@ import ContactForm from '@/components/ContactForm';
 export const metadata: Metadata = pageMetadata(
   'Contact & Hours | Virginia Page & Co. Hair Studio',
   '/contact',
-  'Visit us at 104 South Main Street, Rolesville NC. Open Tue-Fri. Call (919) 671-8353 or email us.'
+  'Visit us at 104 South Main Street, Rolesville NC. Open Tuesday–Friday and alternating Saturdays. Call (919) 671-8353 or email us.'
 );
 
 export default function ContactPage() {
@@ -14,7 +14,6 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="pt-20 pb-28 px-6 relative overflow-hidden">
         {/* Ambient decoration */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[var(--color-gold)]/5 blur-3xl" />
         <div className="max-w-4xl mx-auto text-center relative">
           <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-4 block">Get in Touch</span>
           <h1 className="display-lg mb-8" style={{ fontFamily: 'var(--font-display)' }}>
@@ -39,7 +38,7 @@ export default function ContactPage() {
               <div className="space-y-12">
                 {/* Phone */}
                 <div className="group flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-14 h-14 rounded-md bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
                     <svg className="w-6 h-6 text-[var(--color-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
@@ -58,7 +57,7 @@ export default function ContactPage() {
 
                 {/* Email */}
                 <div className="group flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-14 h-14 rounded-md bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
                     <svg className="w-6 h-6 text-[var(--color-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
@@ -67,7 +66,7 @@ export default function ContactPage() {
                     <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-2 block">Email</span>
                     <a
                       href="mailto:vacohairstudio@gmail.com"
-                      className="text-2xl hover:text-[var(--color-gold)] transition-colors"
+                      className="break-all text-xl sm:text-2xl hover:text-[var(--color-gold)] transition-colors"
                       style={{ fontFamily: 'var(--font-display)' }}
                     >
                       vacohairstudio@gmail.com
@@ -77,7 +76,7 @@ export default function ContactPage() {
 
                 {/* Address */}
                 <div className="group flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-14 h-14 rounded-md bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
                     <svg className="w-6 h-6 text-[var(--color-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -109,33 +108,33 @@ export default function ContactPage() {
                 Business Hours
               </h2>
 
-              <div className="bg-white p-10 rounded-2xl shadow-sm">
+              <div className="hours-panel bg-white p-6 md:p-10 rounded-md">
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center py-3 border-b border-[var(--color-cream-dark)] text-[var(--color-taupe)]">
+                  <div className="flex justify-between gap-4 items-baseline py-3 border-b border-[var(--color-cream-dark)] text-[var(--color-taupe)]">
                     <span>Monday</span>
                     <span>Closed</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 border-b border-[var(--color-cream-dark)]">
+                  <div className="flex justify-between gap-4 items-baseline py-3 border-b border-[var(--color-cream-dark)]">
                     <span className="font-medium">Tuesday</span>
                     <span>9:30 AM – 5:00 PM</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 border-b border-[var(--color-cream-dark)]">
+                  <div className="flex justify-between gap-4 items-baseline py-3 border-b border-[var(--color-cream-dark)]">
                     <span className="font-medium">Wednesday</span>
                     <span>9:30 AM – 5:00 PM</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 border-b border-[var(--color-cream-dark)]">
+                  <div className="flex justify-between gap-4 items-baseline py-3 border-b border-[var(--color-cream-dark)]">
                     <span className="font-medium">Thursday</span>
                     <span>9:30 AM – 4:00 PM</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 border-b border-[var(--color-cream-dark)]">
+                  <div className="flex justify-between gap-4 items-baseline py-3 border-b border-[var(--color-cream-dark)]">
                     <span className="font-medium">Friday</span>
                     <span>9:30 AM – 2:00 PM</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 border-b border-[var(--color-cream-dark)]">
+                  <div className="flex justify-between gap-4 items-baseline py-3 border-b border-[var(--color-cream-dark)]">
                     <span className="font-medium">Saturday</span>
-                    <span className="text-sm">Alternating weeks · 9 AM – 5 PM</span>
+                    <span className="text-sm text-right">Alternating weeks · 9 AM – 5 PM</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 text-[var(--color-taupe)]">
+                  <div className="flex justify-between gap-4 items-baseline py-3 text-[var(--color-taupe)]">
                     <span>Sunday</span>
                     <span>Closed</span>
                   </div>
@@ -191,7 +190,6 @@ export default function ContactPage() {
       <section className="py-32 px-6 text-center bg-gradient-to-b from-[var(--color-cream-dark)] to-[var(--color-cream)] relative overflow-hidden">
         {/* Ambient gold glow background */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[var(--color-gold)]/10 blur-3xl" />
         </div>
         <div className="max-w-3xl mx-auto relative">
           <div className="divider mx-auto mb-8" />

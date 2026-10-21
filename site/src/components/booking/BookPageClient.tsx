@@ -6,6 +6,7 @@
  * (Port of the interactive portion of the old book.astro page.)
  */
 import { useEffect, useRef, useState } from 'react';
+import AcuityScheduler from './AcuityScheduler';
 
 interface StylistOption {
   id: number;
@@ -90,38 +91,17 @@ export default function BookPageClient({ stylists, embedBaseUrl }: Props) {
   const [panel, setPanel] = useState<'pills' | 'questionnaire' | 'recommendation'>('pills');
   const [recommendation, setRecommendation] = useState<Recommendation | null>(null);
   const [iframeSrc, setIframeSrc] = useState(embedBaseUrl);
-  const [loaderVisible, setLoaderVisible] = useState(true);
-  const [loaderFading, setLoaderFading] = useState(false);
   const schedulerRef = useRef<HTMLElement>(null);
-  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
-
-  useEffect(() => {
-    const timers = timersRef.current;
-    return () => timers.forEach(clearTimeout);
-  }, []);
-
   function scrollToScheduler() {
-    schedulerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    schedulerRef.current?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   }
 
   function updateScheduler(stylistKey: string) {
     const calendarId = calendars[stylistKey] || '';
     const newUrl = calendarId ? `${embedBaseUrl}&calendarID=${calendarId}` : embedBaseUrl;
 
-    // Show loader while the new schedule loads
-    setLoaderVisible(true);
-    setLoaderFading(false);
     setIframeSrc(newUrl);
     setActiveStylist(stylistKey);
-  }
-
-  function handleIframeLoad() {
-    timersRef.current.push(
-      setTimeout(() => {
-        setLoaderFading(true);
-        timersRef.current.push(setTimeout(() => setLoaderVisible(false), 500));
-      }, 500)
-    );
   }
 
   function selectStylist(stylistKey: string) {
@@ -170,7 +150,7 @@ export default function BookPageClient({ stylists, embedBaseUrl }: Props) {
           </p>
 
           <div className="max-w-2xl mx-auto mb-6 animate-fade-up" style={{ animationDelay: '0.25s' }}>
-            <p className="rounded-full border border-[var(--color-gold)]/30 bg-white/70 px-5 py-3 text-sm text-[var(--color-charcoal)] shadow-sm">
+            <p className="rounded-md border border-[var(--color-gold)]/30 bg-white/70 px-5 py-3 text-sm text-[var(--color-charcoal)] shadow-sm">
               Want a text reminder? After entering your info, check Acuity&rsquo;s SMS reminder permission box.
               Confirmation still arrives by email.
             </p>
@@ -181,6 +161,7 @@ export default function BookPageClient({ stylists, embedBaseUrl }: Props) {
             <button
               type="button"
               data-stylist="all"
+              aria-pressed={activeStylist === 'all'}
               className={`quick-book-btn filter-pill${activeStylist === 'all' ? ' active' : ''}`}
               style={pillsHidden ? { display: 'none' } : undefined}
               onClick={() => selectStylist('all')}
@@ -194,6 +175,7 @@ export default function BookPageClient({ stylists, embedBaseUrl }: Props) {
                   key={stylist.id}
                   type="button"
                   data-stylist={key}
+                  aria-pressed={activeStylist === key}
                   aria-label={`Book appointment with ${stylist.name}`}
                   className={`quick-book-btn filter-pill${activeStylist === key ? ' active' : ''}`}
                   style={pillsHidden ? { display: 'none' } : undefined}
@@ -268,7 +250,7 @@ export default function BookPageClient({ stylists, embedBaseUrl }: Props) {
                 <button
                   type="button"
                   id="book-recommended"
-                  className="w-full py-3 px-6 bg-[var(--color-gold)] text-white rounded-full font-medium hover:bg-[var(--color-charcoal)] transition-colors"
+                  className="w-full py-3 px-6 bg-[var(--color-charcoal)] text-[var(--color-cream)] rounded-md font-medium hover:bg-[var(--color-charcoal)] transition-colors"
                   onClick={bookRecommended}
                 >
                   Book with <span id="rec-name-btn">{recommendation?.name ?? 'Virginia'}</span>
@@ -290,36 +272,7 @@ export default function BookPageClient({ stylists, embedBaseUrl }: Props) {
       {/* Acuity Embed */}
       <section ref={schedulerRef} className="pb-12 px-6 bg-[var(--color-cream)]" id="scheduler">
         <div className="max-w-5xl mx-auto">
-          <div className="acuity-container relative">
-            <iframe
-              id="acuity-embed"
-              src={iframeSrc}
-              title="Schedule Appointment with Virginia Page & Co. Hair Studio"
-              width="100%"
-              frameBorder="0"
-              loading="lazy"
-              className="acuity-iframe w-full"
-              onLoad={handleIframeLoad}
-            />
-
-            {/* Loading overlay */}
-            {loaderVisible && (
-              <div
-                id="acuity-loader"
-                className="absolute inset-0 bg-[var(--color-cream)]/95 backdrop-blur-sm flex items-center justify-center transition-opacity duration-500"
-                style={{ opacity: loaderFading ? 0 : 1 }}
-              >
-                <div className="text-center">
-                  <div className="w-12 h-12 border-4 border-[var(--color-gold)]/20 border-t-[var(--color-gold)] rounded-full animate-spin mx-auto mb-4" />
-                  <p className="text-[var(--color-taupe)] text-sm">Loading scheduler...</p>
-                </div>
-              </div>
-            )}
-          </div>
-          <p className="text-center text-sm text-[--color-taupe] mt-4">
-            Having trouble with the scheduler? Call us directly at{' '}
-            <a href="tel:9196718353" className="text-[--color-gold] hover:underline">(919) 671-8353</a>
-          </p>
+          <AcuityScheduler src={iframeSrc} />
         </div>
       </section>
     </div>

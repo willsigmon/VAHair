@@ -15,12 +15,12 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section - Full Viewport */}
-      <section className="relative min-h-[100svh] flex items-center justify-center -mt-24">
+      <section className="home-hero relative flex items-center justify-center">
         {/* Background */}
         <div className="absolute inset-0">
           <Image
             src="/images/hero.jpg"
-            alt="Virginia Page & Co. Hair Studio - professional styling environment"
+            alt="Long blonde hair styled in loose waves"
             fill
             priority
             sizes="100vw"
@@ -30,7 +30,7 @@ export default function HomePage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 text-center text-white px-6 max-w-5xl">
+        <div className="hero-copy relative z-10 text-center px-6 max-w-5xl">
           <p className="text-lg md:text-xl tracking-widest uppercase mb-6 animate-fade-up hero-text-shadow" style={{ animationDelay: '0.2s' }}>
             Rolesville, NC
           </p>
@@ -39,27 +39,25 @@ export default function HomePage() {
             <span className="font-medium">feel beautiful</span>
           </h1>
           <p className="text-4xl md:text-6xl font-light tracking-wide mb-12 animate-fade-up" style={{ animationDelay: '0.6s', fontFamily: 'var(--font-display)' }}>
-            <span className="text-glow-breathe" style={{ color: '#C4A962' }}>Do it.</span>
+            <span className="hero-signoff" >Do it.</span>
           </p>
           <div className="animate-fade-up" style={{ animationDelay: '0.8s' }}>
             <a href="/book" className="btn btn-primary btn-hero-cta bg-[var(--color-cream)] text-[var(--color-charcoal)] border-[var(--color-cream)] hover:bg-[var(--color-gold)] hover:border-[var(--color-gold)] text-base px-8 py-4">
-              Book Your Appointment
+              Book Now
             </a>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[var(--color-cream)]/60">
+        <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 text-[var(--color-cream)]/80">
           <div className="w-px h-16 bg-gradient-to-b from-current to-transparent mx-auto mb-2" />
           <span className="text-xs tracking-widest uppercase">Scroll</span>
         </div>
       </section>
 
       {/* Social Proof Bar */}
-      <section className="py-16 md:py-20 px-6 bg-[var(--color-charcoal)] text-[var(--color-cream)] relative overflow-hidden" data-particles="8" data-particle-color="rgba(196, 169, 98, 0.2)">
+      <section className="py-16 md:py-20 px-6 bg-[var(--color-charcoal)] text-[var(--color-cream)] relative overflow-hidden">
         {/* Subtle ambient glow */}
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-64 h-64 rounded-full bg-[var(--color-gold)]/5 blur-3xl" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-64 h-64 rounded-full bg-[var(--color-gold)]/5 blur-3xl" />
         <div className="max-w-5xl mx-auto relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center" data-stagger="0.15">
             <div className="group">
@@ -96,50 +94,22 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Service Cards */}
-          <div className="grid md:grid-cols-3 gap-10 mb-16" data-stagger="0.15">
-            {/* Haircuts */}
-            <a href="/services#haircuts" className="group card card-shine p-12 text-center hover-lift rounded-2xl relative overflow-hidden" data-tilt="8">
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
-              <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center icon-ring-gold transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                <svg className="w-10 h-10 text-[var(--color-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl mb-4 group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>Haircuts</h3>
-              <p className="text-[var(--color-taupe)] mb-8 leading-relaxed">Precision cuts tailored to your unique style, face shape, and lifestyle.</p>
-              <p className="text-3xl font-light text-[var(--color-charcoal)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>From <span className="font-medium">$30</span></p>
-            </a>
-
-            {/* Color */}
-            <a href="/services#color" className="group card card-shine p-12 text-center hover-lift rounded-2xl relative overflow-hidden md:translate-y-6" data-tilt="8">
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[var(--color-blush)] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
-              <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-[var(--color-blush)]/30 to-[var(--color-blush)]/10 flex items-center justify-center icon-ring-gold transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                <svg className="w-10 h-10 text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                </svg>
-              </div>
-              <h3 className="text-2xl mb-4 group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>Hair Color</h3>
-              <p className="text-[var(--color-taupe)] mb-8 leading-relaxed">From subtle highlights to bold transformations that turn heads.</p>
-              <p className="text-3xl font-light text-[var(--color-charcoal)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>From <span className="font-medium">$95</span></p>
-            </a>
-
-            {/* Treatments */}
-            <a href="/services#extras" className="group card card-shine p-12 text-center hover-lift rounded-2xl relative overflow-hidden" data-tilt="8">
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[var(--color-taupe)] to-transparent opacity-40 group-hover:opacity-80 transition-opacity" />
-              <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-[var(--color-taupe)]/15 to-[var(--color-taupe)]/5 flex items-center justify-center icon-ring-gold transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                <svg className="w-10 h-10 text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl mb-4 group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>Finishing Touches</h3>
-              <p className="text-[var(--color-taupe)] mb-8 leading-relaxed">Polished styling, brow tinting, and facial waxing to complete your look.</p>
-              <p className="text-3xl font-light text-[var(--color-charcoal)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>From <span className="font-medium">$20</span></p>
-            </a>
+          <div className="service-preview mb-12">
+            {[
+              { href: '/services#haircuts', name: 'Haircuts', detail: 'Cuts and styling', price: '$25+' },
+              { href: '/services#color', name: 'Hair Color', detail: 'Color, highlights & toning', price: '$75+' },
+              { href: '/services#extras', name: 'Finishing Touches', detail: 'Brow tinting & facial waxing', price: '$20' },
+            ].map((service, index) => (
+              <a key={service.href} href={service.href} className="service-preview-row">
+                <span className="service-number" aria-hidden="true">0{index + 1}</span>
+                <div><h3>{service.name}</h3><p>{service.detail}</p></div>
+                <span className="service-from">From {service.price} <span aria-hidden="true">↗</span></span>
+              </a>
+            ))}
           </div>
 
           <div className="text-center" data-reveal>
-            <a href="/services" className="btn btn-outline" data-magnetic>
+            <a href="/services" className="btn btn-outline">
               View Full Menu
             </a>
           </div>
@@ -149,9 +119,10 @@ export default function HomePage() {
       {/* Stylists Preview */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
+          <h2 className="display-md mb-12">Book with your stylist</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {stylists.map((stylist) => (
-              <div key={stylist.id} className="group relative overflow-hidden bg-[var(--color-cream-dark)] border-glow-gold rounded-3xl">
+              <div key={stylist.id} className="group relative overflow-hidden bg-[var(--color-cream-dark)] border-glow-gold rounded-md">
                 <div className="relative aspect-[4/5]">
                   <Image
                     src={stylist.image}
@@ -194,7 +165,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-10" data-stagger="0.2">
-            <div className="group card-shine bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
+            <div className="group card-shine bg-white p-10 rounded-md shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
               {/* Decorative quote */}
               <div className="absolute -top-4 left-8 w-10 h-10 bg-[var(--color-gold)] rounded-full flex items-center justify-center shadow-lg">
                 <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -218,7 +189,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="group card-shine bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative md:translate-y-4">
+            <div className="group card-shine bg-white p-10 rounded-md shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative md:translate-y-4">
               {/* Decorative quote */}
               <div className="absolute -top-4 left-8 w-10 h-10 bg-[var(--color-gold)] rounded-full flex items-center justify-center shadow-lg">
                 <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -242,7 +213,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="group card-shine bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
+            <div className="group card-shine bg-white p-10 rounded-md shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
               {/* Decorative quote */}
               <div className="absolute -top-4 left-8 w-10 h-10 bg-[var(--color-gold)] rounded-full flex items-center justify-center shadow-lg">
                 <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -365,7 +336,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center">
-            <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" className="btn btn-outline" data-magnetic aria-label="Follow Virginia Page & Co. on Instagram (opens in new window)">
+            <a href="https://instagram.com/vahairco" target="_blank" rel="noopener noreferrer" className="btn btn-outline" aria-label="Follow Virginia Page & Co. on Instagram (opens in new window)">
               Follow on Instagram
             </a>
           </div>
@@ -373,10 +344,9 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 px-6 text-center bg-gradient-to-b from-[var(--color-cream-dark)] to-[var(--color-cream)] relative overflow-hidden" data-particles="10" data-particle-color="rgba(196, 169, 98, 0.25)">
+      <section className="py-32 px-6 text-center bg-gradient-to-b from-[var(--color-cream-dark)] to-[var(--color-cream)] relative overflow-hidden">
         {/* Ambient gold glow background */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[var(--color-gold)]/10 blur-3xl" />
         </div>
         <div className="max-w-3xl mx-auto relative" data-reveal>
           <div className="divider mx-auto mb-8" />

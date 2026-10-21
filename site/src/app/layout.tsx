@@ -129,13 +129,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to main content
         </a>
 
-        {/* Scroll Progress Bar */}
-        <div
-          data-scroll-progress
-          className="fixed top-0 left-0 h-[2px] bg-[var(--color-gold)] z-[9999] pointer-events-none"
-          style={{ width: '0%' }}
-        />
-
         <Header />
         <main id="main-content" className="flex-grow" tabIndex={-1}>
           {children}

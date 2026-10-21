@@ -78,13 +78,13 @@ export default function ContactForm() {
 
       <div className="text-center">
         <button type="submit" className="btn btn-primary">
-          Send Message
+          Open Email App
         </button>
       </div>
 
-      <div id="form-success" className={`text-center py-8${submitted ? '' : ' hidden'}`}>
-        <p className="text-xl text-[var(--color-gold)] mb-2" style={{ fontFamily: 'var(--font-display)' }}>Message sent!</p>
-        <p className="text-[var(--color-taupe)]">Your email client should have opened. We&rsquo;ll get back to you soon.</p>
+      <div id="form-success" role="status" className={`text-center py-8${submitted ? '' : ' hidden'}`}>
+        <p className="text-xl text-[var(--color-gold-dark)] mb-2" style={{ fontFamily: 'var(--font-display)' }}>Finish sending in your email app</p>
+        <p className="text-[var(--color-taupe)]">Your email app should have opened with your message. Send it there to contact the studio.</p>
       </div>
     </form>
   );

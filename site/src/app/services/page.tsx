@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import { haircuts, colorServices, extras, alyssaLightening, alyssaColor, alyssaHaircuts, alyssaTreatments, alyssaExtensions } from '@/lib/data/services';
+import { SERVICE_FAQS } from '@/lib/data/faqs';
+import FaqList from '@/components/FaqList';
 import { pageMetadata } from '@/lib/seo';
 import { acuityBookingUrlForCalendar, acuityBookingUrlForCategory } from '@/lib/acuity';
 
@@ -7,70 +10,6 @@ export const metadata: Metadata = pageMetadata(
   '/services',
   'View starting prices for haircuts, color, highlights, styling, treatments, and facial waxing in downtown Rolesville, NC.'
 );
-
-const haircuts = [
-  { name: "Women's Haircut", price: '$50' },
-  { name: "Men's Haircut", price: '$25+' },
-  { name: "Children's Cut (10 & under)", price: '$30' },
-  { name: 'Blowdry Style', price: '$45+' },
-];
-
-const colorServices = [
-  { name: 'Root Touch Up', price: '$95+' },
-  { name: 'All Over Color', price: '$125+' },
-  { name: 'Halo Foil', price: '$130+' },
-  { name: 'Partial Foil', price: '$150+' },
-  { name: 'Full Foil', price: '$180+' },
-  { name: 'Color/Foil Combination', price: '$200+' },
-  { name: 'Glaze (Toner)', price: '$75+' },
-];
-
-const extras = [
-  { name: 'Eyebrow Tint', price: '$45' },
-  { name: 'Eyebrow Wax', price: '$20' },
-  { name: 'Lip Wax', price: '$25' },
-  { name: 'Chin Wax', price: '$25' },
-];
-
-// Alyssa's specialty services
-const alyssaLightening = [
-  { name: 'Full Lightening w/ Blow Dry', price: '$275' },
-  { name: 'Full Lightening w/ Cut', price: '$300' },
-  { name: 'Partial Lightening w/ Blow Dry', price: '$250' },
-  { name: 'Partial Lightening w/ Cut', price: '$275' },
-  { name: 'Face-Frame w/ Blow Dry', price: '$150' },
-  { name: 'Face-Frame w/ Cut', price: '$175' },
-];
-
-const alyssaColor = [
-  { name: 'Partial Single Process (Roots) w/ Blow Dry', price: '$125' },
-  { name: 'Partial Single Process w/ Cut', price: '$150' },
-  { name: 'Full Single Process (All-Over) w/ Blow Dry', price: '$150' },
-  { name: 'Full Single Process w/ Cut', price: '$175' },
-  { name: 'Glaze w/ Blow Dry', price: '$95' },
-  { name: 'Glaze w/ Cut', price: '$125' },
-  { name: 'Express Roots w/ Blow Dry', price: '$110' },
-  { name: 'Express Roots w/ Cut', price: '$135' },
-  { name: 'Add-on Root Coverage', price: '$50' },
-  { name: 'Additional Color', price: '$20' },
-];
-
-const alyssaHaircuts = [
-  { name: 'Haircut (60 min)', price: '$60' },
-  { name: 'Haircut (30 min)', price: '$30' },
-  { name: 'Bang Trim', price: '$15' },
-];
-
-const alyssaTreatments = [
-  { name: 'K18 Treatment', price: '$30' },
-  { name: 'Smoothing Treatment', price: '$180+' },
-];
-
-const alyssaExtensions = [
-  { name: 'Extension Consultation', price: '$30' },
-  { name: 'Move-Up (1 Row)', price: '$150' },
-  { name: 'Move-Up (2 Row)', price: '$300' },
-];
 
 interface ServiceItem {
   name: string;
@@ -84,10 +23,10 @@ function ServiceRows({ services, border }: { services: ServiceItem[]; border: 'c
       {services.map((service) => (
         <div
           key={service.name}
-          className={`group flex justify-between items-baseline py-5 border-b ${borderClass} hover:border-[var(--color-gold)] transition-colors`}
+          className={`service-row group flex justify-between gap-6 items-baseline py-5 border-b ${borderClass} hover:border-[var(--color-gold)] transition-colors`}
         >
           <span className="text-lg group-hover:text-[var(--color-charcoal)] transition-colors">{service.name}</span>
-          <span className="text-lg font-light text-[var(--color-taupe)] group-hover:text-[var(--color-gold)] transition-colors">{service.price}</span>
+          <span className="shrink-0 tabular-nums text-lg text-[var(--color-taupe)] transition-colors">{service.price}</span>
         </div>
       ))}
     </>
@@ -98,16 +37,15 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-20 pb-28 px-6 relative overflow-hidden" data-particles="6" data-particle-color="rgba(196, 169, 98, 0.15)">
+      <section className="pt-20 pb-28 px-6 relative overflow-hidden">
         {/* Ambient decoration */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[var(--color-gold)]/5 blur-3xl" />
         <div className="max-w-4xl mx-auto text-center relative" data-reveal>
           <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-4 block">Menu</span>
           <h1 className="display-lg mb-8" style={{ fontFamily: 'var(--font-display)' }}>
             Our Services
           </h1>
           <p className="text-xl text-[var(--color-taupe)] max-w-2xl mx-auto leading-relaxed">
-            From precision cuts to stunning color transformations, we offer a full range of hair services.
+            Cuts, color, styling, and finishing touches. Browse starting prices below; final pricing is discussed during your consultation.
           </p>
         </div>
       </section>
@@ -265,10 +203,16 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <section className="py-24 px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="display-md mb-8">Before you book</h2>
+          <FaqList faqs={SERVICE_FAQS} />
+        </div>
+      </section>
+
       {/* Disclaimer & CTA */}
-      <section className="py-28 px-6 bg-[var(--color-charcoal)] text-[var(--color-cream)] relative overflow-hidden" data-particles="8" data-particle-color="rgba(196, 169, 98, 0.2)">
+      <section className="py-28 px-6 bg-[var(--color-charcoal)] text-[var(--color-cream)] relative overflow-hidden">
         {/* Ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[var(--color-gold)]/10 blur-3xl" />
         <div className="max-w-3xl mx-auto text-center relative" data-reveal>
           <div className="divider mx-auto mb-10" style={{ background: 'linear-gradient(90deg, var(--color-gold), transparent)' }} />
           <p className="text-lg text-[var(--color-cream)]/70 mb-10 max-w-2xl mx-auto leading-relaxed">

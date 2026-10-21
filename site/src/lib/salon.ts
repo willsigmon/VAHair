@@ -33,7 +33,7 @@ export const SALON = {
     { day: 'Thursday', opens: '09:30', closes: '16:00' },
     { day: 'Friday', opens: '09:30', closes: '14:00' },
   ] as readonly OpeningHours[],
-  hoursNote: 'Saturday: alternating weeks, 9 AM to 5 PM. Closed Sunday and Monday.',
+  hoursNote: 'Saturday: alternating weeks with Alyssa, 9 AM to 5 PM. Closed Sunday and Monday.',
   social: ['https://instagram.com/vahairco', 'https://facebook.com/vahairco'],
   pages: {
     book: `${SITE_URL}/book`,

@@ -1,6 +1,7 @@
 import { SALON, SALON_ADDRESS_LINE } from '@/lib/salon';
 import { STYLISTS } from '@/lib/data/stylists';
 import { FAQS } from '@/lib/data/faqs';
+import { SERVICE_GROUPS } from '@/lib/data/services';
 
 const formatTime = (hhmm: string) => {
   const [h, m] = hhmm.split(':').map(Number);
@@ -44,7 +45,7 @@ The studio offers haircuts, blow-dry styling, hair color, highlights, toning, se
 For current appointment availability, use the booking page or call the salon.
 `;
 
-/** Longer reference served at /llms-full.txt. Prices are left to /services, which reads live from Acuity. */
+/** Longer reference served at /llms-full.txt. Menu prices come from the same published data as /services. */
 export const llmsFull = () => `${llmsSummary()}
 ## Hours
 ${hoursLines().join('\n')}
@@ -54,13 +55,17 @@ ${STYLISTS.map((s) => `- ${s.fullName}${s.experience ? ` (${s.experience})` : ''
 
 ## Booking
 - Book online at ${SALON.pages.book}. Choose a service, then a stylist and time.
-- Or call ${SALON.phoneDisplay}.
+- Or call or text ${SALON.phoneDisplay}.
 - Current services and starting prices: ${SALON.pages.services} (machine-readable: ${SALON.url}/api/services).
+
+## Published services and starting prices
+Prices are subject to consultation and may differ from Acuity. Confirm the final price with your stylist.
+${SERVICE_GROUPS.map((group) => `### ${group.name}\n${group.services.map((service) => `- ${service.name}: ${service.price}`).join('\n')}`).join('\n\n')}
 
 ## Frequently asked questions
 ${FAQS.map((f) => `### ${f.question}\n${f.answer}`).join('\n\n')}
 
 ## Location
-${SALON_ADDRESS_LINE}. Free street parking on South Main Street.
+${SALON_ADDRESS_LINE}.
 Directions: https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SALON_ADDRESS_LINE)}
 `;
