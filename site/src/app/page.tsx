@@ -3,6 +3,10 @@ import Image from 'next/image';
 import { pageMetadata } from '@/lib/seo';
 import { getHomepageStylists } from '@/lib/data/stylists';
 import PriceList from '@/components/PriceList';
+import { SALON, SALON_ADDRESS_LINE } from '@/lib/salon';
+
+// No Google review URL is recorded in the repo, so search Maps for the salon's own listing.
+const GOOGLE_REVIEWS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${SALON.name}, ${SALON_ADDRESS_LINE}`)}`;
 
 export const metadata: Metadata = pageMetadata(
   'Virginia Page & Co. Hair Studio | Rolesville, NC Hair Salon',
@@ -55,15 +59,14 @@ export default function HomePage() {
         <p className="max-w-6xl mx-auto">
           <span><strong>40<span className="text-[var(--color-gold)]">+</span></strong> Years Combined Experience</span>
           <span><strong>3</strong> Expert Stylists</span>
-          <span><span className="proof-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span> 5-Star Reviews</span>
           <span>Downtown Rolesville</span>
         </p>
       </section>
 
       {/* Services: a printed price card beside a photograph */}
       <section className="home-menu py-32 px-6 bg-[var(--color-cream-dark)]">
-        <div className="home-menu-grid max-w-6xl mx-auto">
-          <figure className="home-menu-photo" data-reveal>
+        <div className="home-menu-grid max-w-6xl mx-auto" data-reveal>
+          <figure className="home-menu-photo">
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image
                 src="/images/hero.jpg"
@@ -76,7 +79,7 @@ export default function HomePage() {
             <figcaption className="hand-note">Rolesville, NC</figcaption>
           </figure>
 
-          <div className="menu-card" data-reveal>
+          <div className="menu-card">
             <span className="eyebrow">Our Services</span>
             <h2 className="display-md mb-4">Crafted with care, tailored to you</h2>
             <p className="text-[var(--color-taupe)] text-lg mb-10">
@@ -133,44 +136,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials: one lead pull-quote, two set in the margin */}
-      <section className="testimonials py-32 px-6 bg-[var(--color-cream-dark)]">
-        <div className="max-w-6xl mx-auto">
-          <div className="testimonials-head" data-reveal>
-            <span className="eyebrow">What Clients Say</span>
-            <h2 className="display-md">Loved by our community</h2>
+      {/* Reviews: quote no one here; send visitors to the reviews themselves */}
+      <section className="py-32 px-6 bg-[var(--color-cream-dark)]">
+        <div className="reviews-card max-w-6xl mx-auto" data-reveal>
+          <div>
+            <span className="eyebrow">Client Reviews</span>
+            <h2 className="display-md">Hear it from our clients</h2>
           </div>
-
-          <div className="testimonials-grid">
-            <figure className="quote quote-lead">
-              <span className="quote-mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-              </span>
-              <div className="quote-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote>
-                &quot;Virginia is amazing! She listens to what you want and delivers every time. I&apos;ve been coming here for years and wouldn&apos;t go anywhere else.&quot;
-              </blockquote>
-              <figcaption><strong>Sarah M.</strong> Loyal client</figcaption>
-            </figure>
-
-            <div className="quote-aside">
-              <figure className="quote">
-                <div className="quote-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote>
-                  &quot;Best salon in Rolesville! Kim did an incredible job with my highlights. The atmosphere is so welcoming and relaxing.&quot;
-                </blockquote>
-                <figcaption><strong>Jennifer L.</strong> Loyal client</figcaption>
-              </figure>
-              <figure className="quote">
-                <div className="quote-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote>
-                  &quot;Alyssa transformed my hair! Her color work is truly artistic. I get compliments everywhere I go now.&quot;
-                </blockquote>
-                <figcaption><strong>Michelle R.</strong> Loyal client</figcaption>
-              </figure>
-            </div>
+          <div className="reviews-action">
+            <p>Read what clients have written about {SALON.name} on Google.</p>
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Read our reviews on Google (opens in new window)"
+              className="btn btn-outline"
+            >
+              Read our reviews on Google
+            </a>
           </div>
         </div>
       </section>
