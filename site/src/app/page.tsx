@@ -3,10 +3,7 @@ import Image from 'next/image';
 import { pageMetadata } from '@/lib/seo';
 import { getHomepageStylists } from '@/lib/data/stylists';
 import PriceList from '@/components/PriceList';
-import { SALON, SALON_ADDRESS_LINE } from '@/lib/salon';
-
-// No Google review URL is recorded in the repo, so search Maps for the salon's own listing.
-const GOOGLE_REVIEWS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${SALON.name}, ${SALON_ADDRESS_LINE}`)}`;
+import ReviewsCarousel from '@/components/ReviewsCarousel';
 
 export const metadata: Metadata = pageMetadata(
   'Virginia Page & Co. Hair Studio | Rolesville, NC Hair Salon',
@@ -24,7 +21,7 @@ export default function HomePage() {
         {/* Background */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero.jpg"
+            src="/images/hero-2800.jpg"
             alt="Long blonde hair styled in loose waves"
             fill
             priority
@@ -69,11 +66,11 @@ export default function HomePage() {
           <figure className="home-menu-photo">
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image
-                src="/images/hero.jpg"
-                alt="Long blonde hair styled in loose waves"
+                src="/images/salon-styling.jpg"
+                alt="A stylist in a cream linen dress blow-dries a client's hair in a bright salon with gold pendant lights and dried flowers"
                 fill
-                sizes="(min-width: 1024px) 50vw, 90vw"
-                className="object-cover object-[65%_80%] scale-[1.5] origin-[65%_85%]"
+                sizes="(min-width: 1024px) 50vw, 78vw"
+                className="object-cover object-[center_60%]"
               />
             </div>
             <figcaption className="hand-note">Rolesville, NC</figcaption>
@@ -136,25 +133,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Reviews: quote no one here; send visitors to the reviews themselves */}
+      {/* Reviews: real client reviews, quoted verbatim from Google and Yelp */}
       <section className="py-32 px-6 bg-[var(--color-cream-dark)]">
-        <div className="reviews-card max-w-6xl mx-auto" data-reveal>
-          <div>
-            <span className="eyebrow">Client Reviews</span>
-            <h2 className="display-md">Hear it from our clients</h2>
-          </div>
-          <div className="reviews-action">
-            <p>Read what clients have written about {SALON.name} on Google.</p>
-            <a
-              href={GOOGLE_REVIEWS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Read our reviews on Google (opens in new window)"
-              className="btn btn-outline"
-            >
-              Read our reviews on Google
-            </a>
-          </div>
+        <div data-reveal>
+          <ReviewsCarousel />
         </div>
       </section>
 

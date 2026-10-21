@@ -1,0 +1,45 @@
+/* Home: rotating client reviews, printed-card style to match the services menu card */
+@layer components {
+  .reviews-carousel { position: relative; padding: 64px; background: var(--color-cream); border: 1px solid var(--color-blush); outline: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent); outline-offset: -12px; }
+  .reviews-carousel-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px; padding-bottom: 32px; border-bottom: 1px solid var(--color-gold); }
+  .reviews-carousel-head h2 { margin: 0; line-height: 1.1; }
+  .reviews-carousel-all { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-gold-dark); text-decoration: underline; text-decoration-color: var(--color-gold); text-underline-offset: 6px; transition: color .2s ease; }
+  .reviews-carousel-all:hover { color: var(--color-charcoal); }
+
+  /* Every slide shares one grid cell, so the card is always as tall as the longest review and nothing is clipped. */
+  .reviews-carousel-viewport { display: grid; padding: 48px 0 40px; touch-action: pan-y; user-select: none; cursor: grab; }
+  .reviews-carousel-viewport:active { cursor: grabbing; }
+  .reviews-slide { grid-area: 1 / 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; max-width: 52rem; margin: 0; opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s; }
+  .reviews-slide[data-active="true"] { opacity: 1; visibility: visible; transition: opacity .7s ease, visibility 0s; }
+  .reviews-stars { font-size: 1.1rem; letter-spacing: .25em; color: var(--color-gold-dark); }
+  .reviews-quote p { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(1.3rem, 2.1vw, 1.75rem); line-height: 1.5; color: var(--color-charcoal); text-wrap: pretty; }
+  .reviews-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-taupe); }
+  .reviews-author { color: var(--color-charcoal); font-weight: 600; }
+
+  .reviews-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; padding-top: 24px; border-top: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent); }
+  .reviews-control { min-height: 44px; padding: 0 4px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-charcoal); background: none; border: 0; cursor: pointer; transition: color .2s ease; }
+  .reviews-control:hover { color: var(--color-gold-dark); }
+  .reviews-toggle { margin-left: auto; color: var(--color-taupe); }
+  .reviews-dots { display: flex; align-items: center; }
+  .reviews-dot { position: relative; width: 28px; height: 44px; background: none; border: 0; cursor: pointer; }
+  .reviews-dot::after { content: ""; position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; border: 1px solid var(--color-gold-dark); border-radius: 50%; transform: translate(-50%, -50%); transition: background-color .2s ease, transform .2s ease; }
+  .reviews-dot:hover::after { background: color-mix(in srgb, var(--color-gold) 40%, transparent); }
+  .reviews-dot[aria-current="true"]::after { background: var(--color-gold-dark); transform: translate(-50%, -50%) scale(1.25); }
+  .reviews-control:focus-visible, .reviews-dot:focus-visible { outline: 2px solid var(--color-gold-dark); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reviews-slide, .reviews-slide[data-active="true"] { transition: none; }
+  }
+  @media (max-width: 1023px) {
+    .reviews-carousel { padding: 48px 40px; }
+  }
+  @media (max-width: 767px) {
+    .reviews-carousel { padding: 40px 24px 32px; outline-offset: -8px; }
+    .reviews-carousel-viewport { padding: 32px 0; }
+    .reviews-slide { gap: 20px; }
+    .reviews-quote p { font-size: 1.2rem; line-height: 1.45; }
+    .reviews-controls { justify-content: space-between; gap: 8px; }
+    .reviews-dots { order: -1; flex-basis: 100%; justify-content: center; }
+    .reviews-toggle { margin-left: 0; }
+  }
+}

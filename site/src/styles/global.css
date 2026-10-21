@@ -1480,13 +1480,6 @@ footer a[href^="tel:"], footer a[href^="mailto:"] { display: flex; }
   .stylist-caption h3 { font-size: clamp(2rem, 3vw, 2.75rem); line-height: 1; }
   .stylist-book { width: 100%; margin-top: auto; padding: 0.9rem 1.25rem; }
 
-  /* Home: reviews live on Google; this card points there instead of quoting anyone */
-  .reviews-card { display: grid; grid-template-columns: 7fr 5fr; align-items: center; gap: 64px; padding: 64px; background: var(--color-cream); border: 1px solid var(--color-blush); outline: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent); outline-offset: -12px; }
-  .reviews-card h2 { margin: 0; line-height: 1.1; }
-  .reviews-action { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; padding-left: 64px; border-left: 1px solid var(--color-gold); }
-  .reviews-action .btn { white-space: nowrap; }
-  .reviews-action p { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: 1.35rem; line-height: 1.45; color: var(--color-charcoal-light); }
-
   /* Services page: heading in the margin, menu on the right */
   .menu-section-grid { display: grid; grid-template-columns: 4fr 7fr; gap: 96px; align-items: start; }
   .menu-section-head { position: sticky; top: calc(var(--header-height) + 32px); }
@@ -1512,8 +1505,6 @@ footer a[href^="tel:"], footer a[href^="mailto:"] { display: flex; }
     .home-menu-photo .hand-note { left: 4px; top: -44px; bottom: auto; }
     .menu-card { margin: -64px 0 0 auto; width: 94%; padding: 48px 32px 40px; }
     .menu-section-grid { grid-template-columns: 1fr; gap: 48px; }
-    .reviews-card { grid-template-columns: 1fr; gap: 32px; padding: 48px 40px; }
-    .reviews-action { padding: 32px 0 0; border-left: 0; border-top: 1px solid var(--color-gold); }
     .menu-section-head { position: static; }
     .menu-photo { max-width: 240px; }
     .stylist-row { column-gap: 24px; }
@@ -1523,8 +1514,6 @@ footer a[href^="tel:"], footer a[href^="mailto:"] { display: flex; }
     .stylist-row { grid-template-columns: minmax(0, 26rem); justify-content: center; }
     .menu-card { width: 100%; padding: 40px 24px 32px; outline-offset: -8px; }
     .price-list-lg .price-row { padding: 18px 0; }
-    .reviews-card { padding: 40px 24px 32px; outline-offset: -8px; }
-    .reviews-action .btn { width: 100%; padding-inline: 0.75rem; letter-spacing: 0.06em; white-space: normal; text-align: center; }
     .price-list-lg a.price-row { margin-inline: -8px; padding-inline: 8px; }
     .proof-line p { flex-direction: column; align-items: center; gap: 6px; }
     .proof-line p > span + span::before { display: none; }

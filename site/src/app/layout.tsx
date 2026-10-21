@@ -5,6 +5,7 @@ import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../styles/global.css';
+import '../styles/reviews-carousel.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { SITE_NAME, SITE_URL, DEFAULT_DESCRIPTION } from '@/lib/seo';

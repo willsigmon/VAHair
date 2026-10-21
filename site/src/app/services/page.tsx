@@ -76,7 +76,7 @@ export default function ServicesPage() {
         aside={
           <figure className="menu-photo menu-photo-tilt">
             <div className="relative aspect-[4/5]">
-              <Image src="/images/hero.jpg" alt="Long blonde hair styled in loose waves" fill sizes="(min-width: 1024px) 28vw, 80vw" className="object-cover object-[72%_center]" />
+              <Image src="/images/salon-styling.jpg" alt="A stylist blow-dries a client's hair at a styling station in a bright, cream-toned salon" fill sizes="(min-width: 1024px) 300px, 240px" className="object-cover object-[center_55%]" />
             </div>
           </figure>
         }
