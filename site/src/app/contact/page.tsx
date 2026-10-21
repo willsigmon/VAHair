@@ -37,12 +37,7 @@ export default function ContactPage() {
 
               <div className="space-y-12">
                 {/* Phone */}
-                <div className="group flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-md bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                    <svg className="w-6 h-6 text-[var(--color-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
+                <div className="contact-entry">
                   <div>
                     <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-2 block">Phone</span>
                     <a
@@ -56,12 +51,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Email */}
-                <div className="group flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-md bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                    <svg className="w-6 h-6 text-[var(--color-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
+                <div className="contact-entry">
                   <div>
                     <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-2 block">Email</span>
                     <a
@@ -75,13 +65,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Address */}
-                <div className="group flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-md bg-gradient-to-br from-[var(--color-gold)]/15 to-[var(--color-gold)]/5 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                    <svg className="w-6 h-6 text-[var(--color-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
+                <div className="contact-entry">
                   <div>
                     <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-2 block">Location</span>
                     <address className="not-italic text-2xl mb-4" style={{ fontFamily: 'var(--font-display)' }}>
@@ -199,7 +183,7 @@ export default function ContactPage() {
           <p className="text-xl text-[var(--color-taupe)] mb-12 max-w-xl mx-auto">
             Schedule your appointment online and let us help you feel beautiful.
           </p>
-          <a href="/book" className="btn btn-primary text-base px-10 py-4 glow-pulse hover:shadow-[0_0_40px_rgba(196,169,98,0.5)]">
+          <a href="/book" className="btn btn-primary text-base px-10 py-4">
             Book Your Appointment
           </a>
         </div>

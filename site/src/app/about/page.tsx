@@ -237,7 +237,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto text-center relative">
           <div className="divider mx-auto mb-10" style={{ background: 'linear-gradient(90deg, var(--color-gold), transparent)' }} />
           <blockquote>
-            <p className="display-md italic text-glow-gold" style={{ fontFamily: 'var(--font-display)' }}>
+            <p className="display-md italic" style={{ fontFamily: 'var(--font-display)' }}>
               &quot;If it makes you feel beautiful<span className="text-[var(--color-gold)]">...</span> do it.&quot;
             </p>
           </blockquote>

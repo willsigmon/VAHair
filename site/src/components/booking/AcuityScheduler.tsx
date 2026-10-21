@@ -59,7 +59,7 @@ export default function AcuityScheduler({ src }: { src: string }) {
         <div className="booking-help-actions">
           <a href={`tel:${SALON.phoneE164}`}>Call</a>
           <a href={`sms:${SALON.phoneE164}`}>Text</a>
-          <a href={src} target="_blank" rel="noopener noreferrer">Open Acuity <span className="sr-only">in a new tab</span>↗</a>
+          <a href={src} target="_blank" rel="noopener noreferrer">Open Acuity <span className="sr-only">in a new tab</span></a>
         </div>
       </div>
       <div className="acuity-container" aria-busy={status === 'loading'}>
@@ -90,7 +90,7 @@ export default function AcuityScheduler({ src }: { src: string }) {
               <a className="btn btn-primary" href={`tel:${SALON.phoneE164}`}>Call {SALON.phoneDisplay}</a>
               <a className="btn btn-outline" href={`sms:${SALON.phoneE164}`}>Text us</a>
             </div>
-            <a className="booking-direct-link" href={src} target="_blank" rel="noopener noreferrer">Open Acuity in a new tab ↗</a>
+            <a className="booking-direct-link" href={src} target="_blank" rel="noopener noreferrer">Open Acuity in a new tab</a>
           </div>
         )}
       </div>

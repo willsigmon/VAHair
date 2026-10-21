@@ -17,7 +17,7 @@ export default function FaqList({ faqs }: { faqs: readonly Faq[] }) {
           <details key={question} className="faq-item group">
             <summary className="flex items-center justify-between gap-6 p-6 cursor-pointer">
               <span className="text-lg font-medium">{question}</span>
-              <span className="faq-chevron shrink-0" aria-hidden="true">⌄</span>
+              <span className="faq-toggle shrink-0" aria-hidden="true" />
             </summary>
             <p className="px-6 pb-6 text-[var(--color-taupe)]">{answer}</p>
           </details>

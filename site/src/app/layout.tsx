@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
-import { Cormorant_Garamond, Outfit } from 'next/font/google';
+import { Caveat, Cormorant_Garamond, Outfit } from 'next/font/google';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -21,6 +21,14 @@ const bodyFont = Outfit({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
+});
+
+// Handwritten accent, used sparingly for margin notes.
+const handFont = Caveat({
+  subsets: ['latin'],
+  variable: '--font-hand',
+  display: 'swap',
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -123,7 +131,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className={`${displayFont.variable} ${bodyFont.variable} min-h-screen flex flex-col`}>
+      <body className={`${displayFont.variable} ${bodyFont.variable} ${handFont.variable} min-h-screen flex flex-col`}>
         {/* Skip Navigation Link (Accessibility) */}
         <a href="#main-content" className="skip-link">
           Skip to main content

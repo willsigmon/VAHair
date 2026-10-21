@@ -664,14 +664,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em;
 }
 
-.btn-ghost::after {
-  content: '→';
-  margin-left: 0.5rem;
-  transition: transform 0.3s ease;
-}
-
-.btn-ghost:hover::after {
-  transform: translateX(4px);
+.btn-ghost {
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+  text-underline-offset: 6px;
 }
 
 /* ================================
@@ -1381,14 +1377,6 @@ p { text-wrap: pretty; }
 .hero-copy .animate-fade-up { animation: none; }
 .hero-copy .btn { background: var(--color-cream); color: var(--color-charcoal); border-color: var(--color-cream); }
 .hero-copy .btn:hover { background: var(--color-gold-light); }
-.service-preview { border-top: 1px solid var(--color-blush); }
-.service-preview-row { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 24px; padding: 32px 0; border-bottom: 1px solid var(--color-blush); }
-.service-preview-row h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 8px; }
-.service-preview-row p { color: var(--color-taupe); }
-.service-number { font-family: var(--font-display), Georgia, serif; font-size: 24px; color: var(--color-gold-dark); }
-.service-from { font-variant-numeric: tabular-nums; white-space: nowrap; }
-.service-from > span { margin-left: 24px; }
-.service-preview-row:hover h3 { color: var(--color-gold-dark); }
 .booking-help { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 16px 0; border-top: 1px solid var(--color-blush); }
 .booking-help p { font-size: 14px; }
 .booking-help-actions { display: flex; flex-wrap: wrap; gap: 24px; }
@@ -1415,10 +1403,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, .btn:focus-visible
   .hero-copy h1 { font-size: clamp(3.3rem, 13vw, 5rem); }
   main section.py-32, main section.py-28, main section.py-24 { padding-top: 64px; padding-bottom: 64px; }
   main section.pt-20 { padding-top: 48px; padding-bottom: 56px; }
-  .service-preview-row { grid-template-columns: 24px 1fr; gap: 16px; padding: 24px 0; }
-  .service-from { grid-column: 2; }
-  .service-row { gap: 24px; }
-  .service-row > span { font-size: 16px; }
   .hours-panel { font-variant-numeric: tabular-nums; }
   .hours-panel > div > div > span:last-child { text-align: right; }
 }
@@ -1429,6 +1413,124 @@ a:focus-visible, button:focus-visible, summary:focus-visible, .btn:focus-visible
 .faq-item { background: var(--color-cream); border: 1px solid var(--color-blush); border-radius: 6px; }
 .faq-item summary { list-style: none; }
 .faq-item summary::-webkit-details-marker { display: none; }
-.faq-item[open] .faq-chevron { transform: rotate(180deg); }
+.faq-toggle { position: relative; width: 16px; height: 16px; }
+.faq-toggle::before, .faq-toggle::after { content: ''; position: absolute; inset: 7px 0 auto; height: 1.5px; background: var(--color-gold-dark); transition: transform .3s ease; }
+.faq-toggle::after { transform: rotate(90deg); }
+.faq-item[open] .faq-toggle::after { transform: rotate(0deg); }
 .faq-item summary:hover { color: var(--color-gold-dark); }
 footer a[href^="tel:"], footer a[href^="mailto:"] { display: flex; }
+
+/* ================================================================
+   EDITORIAL PASS: printed price menu, staggered portraits, pull quotes
+   Layered as components so Tailwind utilities can still override.
+   ================================================================ */
+@layer components {
+  .eyebrow { display: block; margin-bottom: 16px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-gold-dark); }
+  .hand-note { font-family: var(--font-hand), 'Bradley Hand', cursive; font-size: clamp(1.6rem, 2.4vw, 2.1rem); line-height: 1; color: var(--color-gold-dark); transform: rotate(-4deg); }
+  .text-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; text-decoration: underline; text-decoration-color: var(--color-gold); text-decoration-thickness: 1px; text-underline-offset: 6px; }
+  .text-link:hover { color: var(--color-gold-dark); }
+
+  /* Proof line */
+  .proof-line { padding-block: 28px; }
+  .proof-line p { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 8px 0; font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(1.1rem, 1.6vw, 1.4rem); color: color-mix(in srgb, var(--color-cream) 82%, transparent); }
+  .proof-line p > span { display: inline-flex; align-items: baseline; gap: 8px; }
+  .proof-line p > span + span::before { content: ''; width: 4px; height: 4px; margin: 0 20px; border-radius: 50%; background: var(--color-gold); align-self: center; }
+  .proof-line strong { font-style: normal; font-weight: 500; font-size: 1.35em; color: var(--color-cream); font-variant-numeric: lining-nums; }
+  .proof-stars { font-style: normal; font-size: .8em; letter-spacing: .1em; color: var(--color-gold); }
+
+  /* Price list with dotted leaders */
+  .price-list { list-style: none; margin: 0; padding: 0; }
+  .price-row { display: flex; align-items: baseline; gap: 12px; padding: 14px 0; }
+  .price-name { flex: 0 1 auto; }
+  .price-name small { display: block; margin-top: 4px; font-size: .95rem; color: var(--color-taupe); }
+  .price-leader { flex: 1 1 auto; min-width: 24px; border-bottom: 2px dotted color-mix(in srgb, var(--color-taupe) 55%, transparent); transform: translateY(-.3em); }
+  .price-amount { flex: none; white-space: nowrap; font-variant-numeric: tabular-nums lining-nums; color: var(--color-charcoal); }
+  a.price-row { transition: color .3s ease; }
+  a.price-row:hover .price-name { color: var(--color-gold-dark); }
+  a.price-row:hover .price-leader { border-bottom-color: var(--color-gold); }
+  .price-list-lg .price-row { padding: 22px 0; }
+  .price-list-lg .price-name { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.6rem, 2.6vw, 2.25rem); line-height: 1.1; }
+  .price-list-lg .price-name small { font-family: var(--font-body), Arial, sans-serif; line-height: 1.4; }
+  .price-list-lg .price-amount { font-size: 1.05rem; }
+  .price-list-dark .price-leader { border-bottom-color: color-mix(in srgb, var(--color-cream) 28%, transparent); }
+  .price-list-dark .price-amount { color: var(--color-cream); }
+  .price-list-dark li:first-child .price-row, .price-list-dark li:last-child .price-row { color: var(--color-taupe); }
+  .price-list-dark li:first-child .price-amount, .price-list-dark li:last-child .price-amount { color: var(--color-taupe); }
+
+  /* Home: photo with an overlapping printed menu card */
+  .home-menu-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; }
+  .home-menu-photo { position: relative; grid-column: 1 / 7; grid-row: 1; margin: 0; }
+  .home-menu-photo .hand-note { position: absolute; left: 8px; bottom: -44px; }
+  .menu-card { position: relative; z-index: 1; grid-column: 6 / 13; grid-row: 1; padding: 64px 64px 56px; background: var(--color-cream); border: 1px solid var(--color-blush); outline: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent); outline-offset: -12px; }
+
+  /* Home: staggered stylist portraits */
+  .stylist-row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: start; }
+  .stylist-portrait:nth-child(1) { grid-column: 1 / 6; }
+  .stylist-portrait:nth-child(2) { grid-column: 6 / 10; margin-top: 128px; }
+  .stylist-portrait:nth-child(3) { grid-column: 10 / 13; margin-top: 40px; }
+  .stylist-photo { aspect-ratio: 4 / 5; background: var(--color-cream-dark); }
+  .stylist-portrait:nth-child(2) .stylist-photo { aspect-ratio: 3 / 4; }
+  .stylist-portrait:nth-child(3) .stylist-photo { aspect-ratio: 2 / 3; }
+  .stylist-caption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; padding-top: 16px; border-top: 1px solid var(--color-gold); margin-top: 20px; }
+  .stylist-caption h3 { font-size: clamp(2rem, 3vw, 2.75rem); line-height: 1; }
+
+  /* Home: testimonials. The section and figures never clip, so the round
+     quote mark can sit half outside its pane on every breakpoint. */
+  .testimonials { overflow: visible; }
+  .testimonials-head { max-width: 36rem; margin-bottom: 72px; }
+  .testimonials-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 80px; align-items: start; }
+  .quote { margin: 0; }
+  .quote blockquote { margin: 0 0 24px; font-family: var(--font-display), Georgia, serif; font-size: 1.4rem; line-height: 1.45; color: var(--color-charcoal-light); }
+  .quote figcaption { font-size: 14px; color: var(--color-taupe); }
+  .quote figcaption strong { display: block; font-size: 16px; font-weight: 500; color: var(--color-charcoal); }
+  .quote-stars { margin-bottom: 16px; font-size: 1rem; letter-spacing: .15em; color: var(--color-gold-dark); }
+  .quote-lead { position: relative; isolation: isolate; margin-top: 28px; padding: 72px 56px 48px; background: var(--color-cream); border: 1px solid var(--color-blush); }
+  .quote-lead blockquote { font-size: clamp(1.75rem, 2.8vw, 2.4rem); line-height: 1.3; font-style: italic; color: var(--color-charcoal); }
+  .quote-mark { position: absolute; z-index: 2; top: -28px; left: 48px; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--color-gold); color: var(--color-cream); }
+  .quote-mark svg { width: 24px; height: 24px; }
+  .quote-aside { display: grid; gap: 48px; padding-top: 120px; }
+  .quote-aside .quote + .quote { padding-top: 48px; border-top: 1px solid var(--color-gold); }
+
+  /* Services page: heading in the margin, menu on the right */
+  .menu-section-grid { display: grid; grid-template-columns: 4fr 7fr; gap: 96px; align-items: start; }
+  .menu-section-head { position: sticky; top: calc(var(--header-height) + 32px); }
+  .menu-section-head h2 { font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.05; margin-bottom: 12px; }
+  .menu-subtitle { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: 1.3rem; color: var(--color-taupe); }
+  .menu-section-body { font-size: 1.125rem; border-top: 1px solid var(--color-gold); padding-top: 8px; }
+  .menu-group { margin: 48px 0 4px; font-size: 1.5rem; }
+  .menu-section-body > .menu-group:first-child { margin-top: 16px; }
+  .menu-footnote { margin-top: 24px; font-size: 14px; font-style: italic; color: var(--color-taupe); }
+  .menu-photo { max-width: 300px; margin: 40px 0 0; padding: 10px 10px 36px; background: var(--color-cream); box-shadow: 0 1px 2px rgba(45, 42, 38, .12), 0 12px 24px -16px rgba(45, 42, 38, .35); }
+  .menu-photo-tilt { transform: rotate(-2deg); }
+  .services-hero .eyebrow { font-family: var(--font-hand), 'Bradley Hand', cursive; font-size: 2rem; letter-spacing: 0; text-transform: none; transform: rotate(-3deg); transform-origin: left; }
+
+  /* Book page notes and contact entries */
+  .book-notes { display: grid; grid-template-columns: 5fr 4fr 3fr; gap: 56px; }
+  .book-note { padding-top: 24px; border-top: 1px solid var(--color-gold); }
+  .book-note h3 { margin-bottom: 8px; font-size: 1.6rem; }
+  .contact-entry { padding-left: 24px; border-left: 1px solid var(--color-gold); }
+
+  @media (max-width: 1023px) {
+    .home-menu-grid { display: block; }
+    .home-menu-photo { width: 78%; }
+    .home-menu-photo .hand-note { left: 4px; top: -44px; bottom: auto; }
+    .menu-card { margin: -64px 0 0 auto; width: 94%; padding: 48px 32px 40px; }
+    .testimonials-grid, .menu-section-grid { grid-template-columns: 1fr; gap: 48px; }
+    .quote-aside { padding-top: 0; }
+    .menu-section-head { position: static; }
+    .menu-photo { max-width: 240px; }
+  }
+  @media (max-width: 767px) {
+    .stylist-row { display: grid; grid-template-columns: 1fr; row-gap: 56px; }
+    .stylist-portrait:nth-child(n) { grid-column: auto; margin-top: 0; width: 86%; }
+    .stylist-portrait:nth-child(2) { margin-left: auto; }
+    .stylist-portrait:nth-child(n) .stylist-photo { aspect-ratio: 4 / 5; }
+    .menu-card { width: 100%; padding: 40px 24px 32px; outline-offset: -8px; }
+    .price-list-lg .price-row { padding: 18px 0; }
+    .quote-lead { padding: 64px 28px 36px; }
+    .quote-mark { left: 28px; }
+    .proof-line p { flex-direction: column; align-items: center; gap: 6px; }
+    .proof-line p > span + span::before { display: none; }
+    .book-notes { grid-template-columns: 1fr; gap: 32px; }
+  }
+}

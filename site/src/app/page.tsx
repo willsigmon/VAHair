@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { pageMetadata } from '@/lib/seo';
 import { getHomepageStylists } from '@/lib/data/stylists';
+import PriceList from '@/components/PriceList';
 
 export const metadata: Metadata = pageMetadata(
   'Virginia Page & Co. Hair Studio | Rolesville, NC Hair Salon',
@@ -55,186 +56,126 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Social Proof Bar */}
-      <section className="py-16 md:py-20 px-6 bg-[var(--color-charcoal)] text-[var(--color-cream)] relative overflow-hidden">
-        {/* Subtle ambient glow */}
-        <div className="max-w-5xl mx-auto relative">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center" data-stagger="0.15">
-            <div className="group">
-              <p className="text-4xl md:text-5xl font-light mb-2 text-[var(--color-cream)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}><span>40</span><span className="text-[var(--color-gold)]">+</span></p>
-              <p className="text-xs text-[var(--color-cream)]/60 uppercase tracking-widest">Years Combined<br className="hidden md:block" /> Experience</p>
-            </div>
-            <div className="group">
-              <p className="text-4xl md:text-5xl font-light mb-2 text-[var(--color-cream)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}><span>3</span></p>
-              <p className="text-xs text-[var(--color-cream)]/60 uppercase tracking-widest">Expert<br className="hidden md:block" /> Stylists</p>
-            </div>
-            <div className="group">
-              <p className="text-2xl md:text-3xl font-light mb-2 text-[var(--color-gold)] tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-              <p className="text-xs text-[var(--color-cream)]/60 uppercase tracking-widest">5-Star<br className="hidden md:block" /> Reviews</p>
-            </div>
-            <div className="group">
-              <p className="text-4xl md:text-5xl font-light mb-2 text-[var(--color-cream)] group-hover:text-[var(--color-gold)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>♥</p>
-              <p className="text-xs text-[var(--color-cream)]/60 uppercase tracking-widest">Downtown<br className="hidden md:block" /> Rolesville</p>
-            </div>
-          </div>
-        </div>
+      {/* Social Proof: a single printed line, not a stat grid */}
+      <section className="proof-line bg-[var(--color-charcoal)] text-[var(--color-cream)] px-6">
+        <p className="max-w-6xl mx-auto">
+          <span><strong>40<span className="text-[var(--color-gold)]">+</span></strong> Years Combined Experience</span>
+          <span><strong>3</strong> Expert Stylists</span>
+          <span><span className="proof-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span> 5-Star Reviews</span>
+          <span>Downtown Rolesville</span>
+        </p>
       </section>
 
-      {/* Services Section */}
-      <section className="py-32 px-6 bg-[var(--color-cream-dark)]">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center max-w-2xl mx-auto mb-20" data-reveal>
-            <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-4 block">Our Services</span>
-            <h2 className="display-md mb-6" style={{ fontFamily: 'var(--font-display)' }}>
-              Crafted with care, tailored to you
-            </h2>
-            <p className="text-[var(--color-taupe)] text-lg">
+      {/* Services: a printed price card beside a photograph */}
+      <section className="home-menu py-32 px-6 bg-[var(--color-cream-dark)]">
+        <div className="home-menu-grid max-w-6xl mx-auto">
+          <figure className="home-menu-photo" data-reveal>
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <Image
+                src="/images/hero.jpg"
+                alt="Long blonde hair styled in loose waves"
+                fill
+                sizes="(min-width: 1024px) 50vw, 90vw"
+                className="object-cover object-[65%_80%] scale-[1.5] origin-[65%_85%]"
+              />
+            </div>
+            <figcaption className="hand-note">Rolesville, NC</figcaption>
+          </figure>
+
+          <div className="menu-card" data-reveal>
+            <span className="eyebrow">Our Services</span>
+            <h2 className="display-md mb-4">Crafted with care, tailored to you</h2>
+            <p className="text-[var(--color-taupe)] text-lg mb-10">
               From precision cuts to stunning color transformations
             </p>
-          </div>
 
-          <div className="service-preview mb-12">
-            {[
-              { href: '/services#haircuts', name: 'Haircuts', detail: 'Cuts and styling', price: '$25+' },
-              { href: '/services#color', name: 'Hair Color', detail: 'Color, highlights & toning', price: '$75+' },
-              { href: '/services#extras', name: 'Finishing Touches', detail: 'Brow tinting & facial waxing', price: '$20' },
-            ].map((service, index) => (
-              <a key={service.href} href={service.href} className="service-preview-row">
-                <span className="service-number" aria-hidden="true">0{index + 1}</span>
-                <div><h3>{service.name}</h3><p>{service.detail}</p></div>
-                <span className="service-from">From {service.price} <span aria-hidden="true">↗</span></span>
-              </a>
-            ))}
-          </div>
+            <PriceList
+              className="price-list-lg"
+              items={[
+                { href: '/services#haircuts', name: 'Haircuts', detail: 'Cuts and styling', price: 'From $25+' },
+                { href: '/services#color', name: 'Hair Color', detail: 'Color, highlights & toning', price: 'From $75+' },
+                { href: '/services#extras', name: 'Finishing Touches', detail: 'Brow tinting & facial waxing', price: 'From $20' },
+              ]}
+            />
 
-          <div className="text-center" data-reveal>
-            <a href="/services" className="btn btn-outline">
+            <a href="/services" className="btn btn-outline mt-12">
               View Full Menu
             </a>
           </div>
         </div>
       </section>
 
-      {/* Stylists Preview */}
+      {/* Stylists: staggered portraits, names set beneath like a program */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="display-md mb-12">Book with your stylist</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h2 className="display-md mb-16 lg:mb-20">Book with your stylist</h2>
+          <div className="stylist-row">
             {stylists.map((stylist) => (
-              <div key={stylist.id} className="group relative overflow-hidden bg-[var(--color-cream-dark)] border-glow-gold rounded-md">
-                <div className="relative aspect-[4/5]">
+              <article key={stylist.id} className="stylist-portrait">
+                <div className="stylist-photo relative">
                   <Image
                     src={stylist.image}
                     alt={`Portrait of ${stylist.fullName}`}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className={`object-cover transition-transform duration-700 group-hover:scale-105 ${stylist.imagePosition ?? ''}`.trim()}
+                    className={`object-cover ${stylist.imagePosition ?? ''}`.trim()}
                   />
                 </div>
-                {/* Gradient overlay for text legibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 via-40% to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <h3 className="text-4xl mb-6 text-white leading-none" style={{ fontFamily: 'var(--font-display)' }}>
-                    {stylist.name}
-                  </h3>
+                <div className="stylist-caption">
+                  <h3>{stylist.name}</h3>
                   <a
                     href={stylist.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Book appointment with ${stylist.name} (opens in new window)`}
-                    className="btn bg-[var(--color-gold)] text-[var(--color-charcoal)] border-[var(--color-gold)] hover:bg-[var(--color-gold-light)] hover:border-[var(--color-gold-light)] hover:shadow-[0_0_30px_rgba(196,169,98,0.4)] transition-all duration-300"
+                    className="text-link"
                   >
                     Book {stylist.name}
                   </a>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-32 px-6 bg-[var(--color-cream-dark)]">
+      {/* Testimonials: one lead pull-quote, two set in the margin */}
+      <section className="testimonials py-32 px-6 bg-[var(--color-cream-dark)]">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20" data-reveal>
-            <span className="text-xs tracking-widest uppercase text-[var(--color-gold-dark)] mb-4 block">What Clients Say</span>
-            <h2 className="display-md" style={{ fontFamily: 'var(--font-display)' }}>
-              Loved by our community
-            </h2>
+          <div className="testimonials-head" data-reveal>
+            <span className="eyebrow">What Clients Say</span>
+            <h2 className="display-md">Loved by our community</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10" data-stagger="0.2">
-            <div className="group card-shine bg-white p-10 rounded-md shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
-              {/* Decorative quote */}
-              <div className="absolute -top-4 left-8 w-10 h-10 bg-[var(--color-gold)] rounded-full flex items-center justify-center shadow-lg">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <div className="testimonials-grid">
+            <figure className="quote quote-lead">
+              <span className="quote-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
-              </div>
-              <div className="flex gap-1 mb-6 text-[var(--color-gold)] text-xl" role="img" aria-label="5 out of 5 stars">
-                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
-              </div>
-              <p className="text-[var(--color-charcoal-light)] mb-8 text-lg leading-relaxed" style={{ fontFamily: 'var(--font-display)' }}>
+              </span>
+              <div className="quote-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>
                 &quot;Virginia is amazing! She listens to what you want and delivers every time. I&apos;ve been coming here for years and wouldn&apos;t go anywhere else.&quot;
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[var(--color-gold)]/10 flex items-center justify-center">
-                  <span className="text-[var(--color-gold)] font-medium">S</span>
-                </div>
-                <div>
-                  <p className="font-medium text-[var(--color-charcoal)]">Sarah M.</p>
-                  <p className="text-sm text-[var(--color-taupe)]">Loyal client</p>
-                </div>
-              </div>
-            </div>
+              </blockquote>
+              <figcaption><strong>Sarah M.</strong> Loyal client</figcaption>
+            </figure>
 
-            <div className="group card-shine bg-white p-10 rounded-md shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative md:translate-y-4">
-              {/* Decorative quote */}
-              <div className="absolute -top-4 left-8 w-10 h-10 bg-[var(--color-gold)] rounded-full flex items-center justify-center shadow-lg">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-              </div>
-              <div className="flex gap-1 mb-6 text-[var(--color-gold)] text-xl" role="img" aria-label="5 out of 5 stars">
-                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
-              </div>
-              <p className="text-[var(--color-charcoal-light)] mb-8 text-lg leading-relaxed" style={{ fontFamily: 'var(--font-display)' }}>
-                &quot;Best salon in Rolesville! Kim did an incredible job with my highlights. The atmosphere is so welcoming and relaxing.&quot;
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[var(--color-gold)]/10 flex items-center justify-center">
-                  <span className="text-[var(--color-gold)] font-medium">J</span>
-                </div>
-                <div>
-                  <p className="font-medium text-[var(--color-charcoal)]">Jennifer L.</p>
-                  <p className="text-sm text-[var(--color-taupe)]">Loyal client</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="group card-shine bg-white p-10 rounded-md shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
-              {/* Decorative quote */}
-              <div className="absolute -top-4 left-8 w-10 h-10 bg-[var(--color-gold)] rounded-full flex items-center justify-center shadow-lg">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-              </div>
-              <div className="flex gap-1 mb-6 text-[var(--color-gold)] text-xl" role="img" aria-label="5 out of 5 stars">
-                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
-              </div>
-              <p className="text-[var(--color-charcoal-light)] mb-8 text-lg leading-relaxed" style={{ fontFamily: 'var(--font-display)' }}>
-                &quot;Alyssa transformed my hair! Her color work is truly artistic. I get compliments everywhere I go now.&quot;
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[var(--color-gold)]/10 flex items-center justify-center">
-                  <span className="text-[var(--color-gold)] font-medium">M</span>
-                </div>
-                <div>
-                  <p className="font-medium text-[var(--color-charcoal)]">Michelle R.</p>
-                  <p className="text-sm text-[var(--color-taupe)]">Loyal client</p>
-                </div>
-              </div>
+            <div className="quote-aside">
+              <figure className="quote">
+                <div className="quote-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote>
+                  &quot;Best salon in Rolesville! Kim did an incredible job with my highlights. The atmosphere is so welcoming and relaxing.&quot;
+                </blockquote>
+                <figcaption><strong>Jennifer L.</strong> Loyal client</figcaption>
+              </figure>
+              <figure className="quote">
+                <div className="quote-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote>
+                  &quot;Alyssa transformed my hair! Her color work is truly artistic. I get compliments everywhere I go now.&quot;
+                </blockquote>
+                <figcaption><strong>Michelle R.</strong> Loyal client</figcaption>
+              </figure>
             </div>
           </div>
         </div>
@@ -243,52 +184,30 @@ export default function HomePage() {
       {/* Hours & Location */}
       <section className="py-32 px-6 bg-[var(--color-charcoal)] text-[var(--color-cream)]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-[1.15fr_1fr] gap-16 lg:gap-24">
             {/* Hours */}
-            <div data-reveal="left">
-              <span className="text-xs tracking-widest uppercase text-[var(--color-gold)] mb-4 block">Hours</span>
-              <h2 className="display-md mb-12" style={{ fontFamily: 'var(--font-display)' }}>
-                When to find us
-              </h2>
+            <div data-reveal>
+              <span className="eyebrow text-[var(--color-gold)]">Hours</span>
+              <h2 className="display-md mb-12">When to find us</h2>
 
-              <div className="space-y-4 text-lg">
-                <div className="flex justify-between py-3 border-b border-[var(--color-charcoal-light)] text-[var(--color-taupe)]">
-                  <span>Monday</span>
-                  <span>Closed</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-[var(--color-charcoal-light)]">
-                  <span>Tuesday</span>
-                  <span>9:30 AM – 5:00 PM</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-[var(--color-charcoal-light)]">
-                  <span>Wednesday</span>
-                  <span>9:30 AM – 5:00 PM</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-[var(--color-charcoal-light)]">
-                  <span>Thursday</span>
-                  <span>9:30 AM – 4:00 PM</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-[var(--color-charcoal-light)]">
-                  <span>Friday</span>
-                  <span>9:30 AM – 2:00 PM</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-[var(--color-charcoal-light)]">
-                  <span>Saturday</span>
-                  <span className="text-sm">Alternating weeks · 9 AM – 5 PM</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-[var(--color-charcoal-light)] text-[var(--color-taupe)]">
-                  <span>Sunday</span>
-                  <span>Closed</span>
-                </div>
-              </div>
+              <PriceList
+                className="price-list-dark text-lg"
+                items={[
+                  { name: 'Monday', price: 'Closed' },
+                  { name: 'Tuesday', price: '9:30 AM – 5:00 PM' },
+                  { name: 'Wednesday', price: '9:30 AM – 5:00 PM' },
+                  { name: 'Thursday', price: '9:30 AM – 4:00 PM' },
+                  { name: 'Friday', price: '9:30 AM – 2:00 PM' },
+                  { name: 'Saturday', price: 'Alternating weeks · 9 AM – 5 PM' },
+                  { name: 'Sunday', price: 'Closed' },
+                ]}
+              />
             </div>
 
             {/* Location */}
-            <div data-reveal="right">
-              <span className="text-xs tracking-widest uppercase text-[var(--color-gold)] mb-4 block">Location</span>
-              <h2 className="display-md mb-12" style={{ fontFamily: 'var(--font-display)' }}>
-                Where to find us
-              </h2>
+            <div className="lg:pt-24" data-reveal>
+              <span className="eyebrow text-[var(--color-gold)]">Location</span>
+              <h2 className="display-md mb-12">Where to find us</h2>
 
               <address className="not-italic text-xl text-[var(--color-cream)]/80 mb-8 leading-relaxed">
                 104 South Main Street<br />
@@ -350,13 +269,13 @@ export default function HomePage() {
         </div>
         <div className="max-w-3xl mx-auto relative" data-reveal>
           <div className="divider mx-auto mb-8" />
-          <h2 className="display-lg mb-8 text-balance text-glow-gold" style={{ fontFamily: 'var(--font-display)' }}>
+          <h2 className="display-lg mb-8 text-balance" style={{ fontFamily: 'var(--font-display)' }}>
             Ready for your transformation?
           </h2>
           <p className="text-xl text-[var(--color-taupe)] mb-12 max-w-xl mx-auto">
             Book your appointment today and let us help you feel beautiful.
           </p>
-          <a href="/book" className="btn btn-primary text-base px-10 py-4 glow-pulse hover:shadow-[0_0_40px_rgba(196,169,98,0.5)]">
+          <a href="/book" className="btn btn-primary text-base px-10 py-4">
             Book Your Appointment
           </a>
         </div>
