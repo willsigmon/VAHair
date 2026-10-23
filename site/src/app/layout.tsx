@@ -8,6 +8,7 @@ import '../styles/global.css';
 import '../styles/reviews-carousel.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ConversionTracking from '@/components/ConversionTracking';
 import { SITE_NAME, SITE_URL, DEFAULT_DESCRIPTION } from '@/lib/seo';
 import { SALON } from '@/lib/salon';
 import WebMcpProvider from '@/components/agent/WebMcpProvider';
@@ -150,6 +151,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         <WebMcpProvider />
         <Analytics />
+        <ConversionTracking />
         <SpeedInsights />
       </body>
     </html>

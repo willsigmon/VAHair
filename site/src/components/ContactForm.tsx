@@ -5,6 +5,7 @@
  * (port of the inline script from the old contact.astro page).
  */
 import { useState, type FormEvent } from 'react';
+import { track } from '@vercel/analytics';
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -24,6 +25,8 @@ export default function ContactForm() {
 
     window.location.href = `mailto:vacohairstudio@gmail.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
+    // This form hands off to an email app; it cannot confirm email delivery.
+    track('Form Submit', { location: 'contact-form' });
   }
 
   return (
