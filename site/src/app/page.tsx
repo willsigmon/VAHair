@@ -5,10 +5,24 @@ import { getHomepageStylists } from '@/lib/data/stylists';
 import PriceList from '@/components/PriceList';
 import ReviewsCarousel from '@/components/ReviewsCarousel';
 
-export const metadata: Metadata = pageMetadata(
+const homepageMetadata = pageMetadata(
   'Virginia Page & Co. Hair Studio | Rolesville, NC Hair Salon',
   '/'
 );
+
+export const metadata: Metadata = {
+  ...homepageMetadata,
+  openGraph: {
+    ...homepageMetadata.openGraph,
+    videos: [{
+      url: 'https://vahair.studio/og/preview.mp4',
+      secureUrl: 'https://vahair.studio/og/preview.mp4',
+      type: 'video/mp4',
+      width: 1200,
+      height: 630,
+    }],
+  },
+};
 
 export default function HomePage() {
   // Use centralized stylist data
