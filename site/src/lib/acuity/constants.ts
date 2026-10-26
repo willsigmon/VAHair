@@ -37,8 +37,10 @@ export const PUBLIC_APPOINTMENT_TYPE_IDS = [
   // Extras
   88812797, 88812805, 88812815, 88812820,
   // Haircuts
-  88702235, 88812396, 88812446, 88812623, 88818521,
+  88702235, 88812396, 88812623, 88818521,
 ] as const;
+
+const PUBLIC_HAIRCUT_APPOINTMENT_TYPE_IDS = [88702235, 88812396, 88812623, 88818521] as const;
 
 const PUBLIC_EXTRA_APPOINTMENT_TYPE_IDS = [88812797, 88812805, 88812815, 88812820] as const;
 
@@ -63,8 +65,12 @@ export function acuityBookingUrlForAppointmentType(appointmentTypeId: number | s
 }
 
 export function acuityBookingUrlForCategory(categoryName: string): string {
-  // The broader Extras category contains a retired service in Acuity. Use an
-  // explicit allowlist until the account owner removes it in Acuity admin.
+  // These categories contain retired services in Acuity. Keep booking links
+  // limited to the approved services until Acuity admin cleanup is complete.
+  if (categoryName.trim().toLowerCase() === 'haircuts') {
+    return acuityBookingUrlForAppointmentTypes(PUBLIC_HAIRCUT_APPOINTMENT_TYPE_IDS);
+  }
+
   if (categoryName.trim().toLowerCase() === 'extras') {
     return acuityBookingUrlForAppointmentTypes(PUBLIC_EXTRA_APPOINTMENT_TYPE_IDS);
   }

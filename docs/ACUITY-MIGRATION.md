@@ -1,5 +1,7 @@
 # Acuity Migration Checklist
 
+
+> Historical migration record: Children's Cut is retired from the website; Acuity type 88812446 still needs admin cleanup.
 > Migrating from Squarespace-connected Acuity to standalone Acuity account
 
 **Migration Date:** 2026-02-02

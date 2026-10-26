@@ -16,10 +16,6 @@ export const SERVICE_FAQS: readonly Faq[] = [
     question: 'Do new hair extensions require a consultation?',
     answer: 'New extension installs require a consultation first. Alyssa’s extension consultation is listed at $30.',
   },
-  {
-    question: 'Do you offer children’s haircuts?',
-    answer: 'The Haircuts menu includes a Children’s Cut for ages 10 and under, listed at $30. Alyssa’s services are for adult women only.',
-  },
 ];
 
 export const FAQS: readonly Faq[] = [

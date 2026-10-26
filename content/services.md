@@ -10,7 +10,6 @@
 |---------|-------|
 | Women's Haircut | $50 |
 | Men's Haircut | $30 |
-| Children's Cut (10 & under) | $30 |
 | Blowdry Style | $45+ |
 
 ---

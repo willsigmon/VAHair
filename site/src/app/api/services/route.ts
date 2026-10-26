@@ -28,7 +28,7 @@ const corsHeaders = {
 
 // Services intentionally removed from the public website remain excluded even
 // if an old Acuity appointment type is still active during operational cleanup.
-const excludedServiceNames = new Set(['brazilian blowout']);
+const excludedServiceNames = new Set(['brazilian blowout', "children's cut (10 & under)"]);
 
 // Handle CORS preflight
 export function OPTIONS() {
@@ -43,7 +43,6 @@ const fallbackServices: ServiceCategory[] = [
     services: [
       { id: 1, name: "Women's Haircut", price: '$50', duration: 45, category: 'Haircuts', description: '', bookingUrl: acuityBookingUrlForCategory('Haircuts') },
       { id: 2, name: "Men's Haircut", price: '$25+', duration: 30, category: 'Haircuts', description: '', bookingUrl: acuityBookingUrlForCategory('Haircuts') },
-      { id: 3, name: "Children's Cut (10 & under)", price: '$30', duration: 30, category: 'Haircuts', description: '', bookingUrl: acuityBookingUrlForCategory('Haircuts') },
       { id: 4, name: 'Blowdry Style', price: '$45+', duration: 30, category: 'Haircuts', description: '', bookingUrl: acuityBookingUrlForCategory('Haircuts') },
     ],
   },
@@ -120,6 +119,7 @@ export async function GET(request: Request) {
             (apt) =>
               apt.active &&
               !apt.private &&
+              apt.id !== 88812446 &&
               !excludedServiceNames.has(apt.name.trim().toLowerCase())
           )
           .map(transformAppointmentType);

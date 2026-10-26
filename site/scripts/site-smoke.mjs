@@ -80,6 +80,7 @@ try {
   await nojs.goto(base + '/services');
   assert.ok(await nojs.getByRole('heading', { name: 'Our Services', exact: true }).isVisible());
   assert.ok(await nojs.getByText("Women's Haircut", { exact: true }).isVisible());
+  assert.ok(await nojs.getByText("Men's Haircut", { exact: true }).isVisible());
   await nojs.goto(base + '/book');
   assert.ok(await nojs.locator('.booking-help a[href^="sms:"]').isVisible());
   console.log('PASS no-JavaScript content and booking contact links');

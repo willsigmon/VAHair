@@ -87,3 +87,36 @@ test('HairSalon schema uses the repository address, phone and fixed weekday hour
     ['Tuesday', '09:30', '17:00'], ['Wednesday', '09:30', '17:00'], ['Thursday', '09:30', '16:00'], ['Friday', '09:30', '14:00'],
   ]);
 });
+
+for (const path of ['/', '/services', '/faq', '/book']) {
+  test(`${path} omits retired services from public content and booking links`, async () => {
+    const page = await pageHtml(path);
+    assert.doesNotMatch(page, /children(?:'|’|&#x27;|&apos;|&#39;)s\s+(?:cut|haircut)|kids[’' -]*cuts?|brazilian\s+blowout|88812446|88812787/i);
+  });
+}
+
+test('haircut menu and category booking retain women and both men without retired types', async () => {
+  const page = await pageHtml('/services');
+  assert.match(page, /Women(?:'|&#x27;)s Haircut/);
+  assert.match(page, /Men(?:'|&#x27;)s Haircut/);
+  const link = page.match(/href="([^"]+)"[^>]*aria-label="Book a Haircut/);
+  assert.ok(link, 'Haircut booking link exists');
+  const url = new URL(link[1].replaceAll('&amp;', '&'));
+  assert.equal(url.searchParams.has('appointmentType'), false);
+  assert.deepEqual(url.searchParams.getAll('appointmentType[]'), ['88702235', '88812396', '88812623', '88818521']);
+  const booking = await pageHtml('/book');
+  const embed = new URL(booking.match(/<iframe[^>]*src="([^"]+)"/)[1].replaceAll('&amp;', '&'));
+  for (const id of ['88812396', '88818521']) {
+    assert.ok(embed.searchParams.getAll('appointmentType[]').includes(id), `Men's haircut ${id} remains bookable`);
+  }
+});
+
+test('services API omits retired services while preserving men and women', { skip: !process.env.SITE_URL }, async () => {
+  const response = await fetch(new URL('/api/services', process.env.SITE_URL));
+  assert.ok([200, 503].includes(response.status));
+  const payload = await response.json();
+  const services = payload.data.flatMap(category => category.services);
+  assert.ok(services.some(service => service.name.startsWith("Men's Haircut")));
+  assert.ok(services.some(service => service.name.startsWith("Women's Haircut")));
+  assert.doesNotMatch(JSON.stringify(services), /children|kids|brazilian blowout|88812446|88812787/i);
+});

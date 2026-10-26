@@ -1,5 +1,7 @@
 # Acuity Appointment Types Migration State
 
+
+> Historical migration record: Children's Cut is retired from the website; Acuity type 88812446 still needs admin cleanup.
 **Last Updated:** 2026-02-02
 **Status:** IN PROGRESS
 
