@@ -20,6 +20,7 @@ Next.js (App Router) + React 19 + TypeScript + Tailwind CSS 4 + shadcn/ui, deplo
 - `src/lib/data/stylists.ts` — single source of truth for stylists
 - `src/styles/global.css` — Tailwind 4 + brand design tokens
 - `public/scripts/animations.js` — vanilla JS animation engine (re-runs per full page load)
+- `public/share/` — homepage share animation (`og-v1.mp4`, 1200×630, 5.5 s loop) and its poster (`og-v1.jpg`), wired as `og:video` / `og:image` in `src/lib/seo.ts`. Link scrapers cache these hard, so bump the version in the filename when either changes.
 
 ## Environment
 
