@@ -157,7 +157,7 @@ export default function HomePage() {
                   { name: 'Wednesday', price: '9:30 AM – 5:00 PM' },
                   { name: 'Thursday', price: '9:30 AM – 4:00 PM' },
                   { name: 'Friday', price: '9:30 AM – 2:00 PM' },
-                  { name: 'Saturday', price: 'Alternating weeks · 9 AM – 5 PM' },
+                  { name: 'Saturday', price: '9 AM – 5 PM', detail: 'Alternating weeks' },
                   { name: 'Sunday', price: 'Closed' },
                 ]}
               />
