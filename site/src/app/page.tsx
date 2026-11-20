@@ -187,7 +187,7 @@ export default function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Get directions to Virginia Page & Co. on Google Maps (opens in new window)"
-                className="btn btn-outline border-[var(--color-cream)] text-[var(--color-cream)] hover:bg-[var(--color-cream)] hover:text-[var(--color-charcoal)]"
+                className="btn btn-outline btn-outline-directions-on-dark"
               >
                 Get Directions
               </a>

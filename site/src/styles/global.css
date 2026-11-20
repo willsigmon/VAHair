@@ -659,6 +659,18 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-cream);
 }
 
+.btn-outline-directions-on-dark {
+  background: transparent;
+  color: var(--color-cream);
+  border-color: var(--color-cream);
+}
+
+.btn-outline-directions-on-dark:hover {
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  border-color: var(--color-cream);
+}
+
 .btn-ghost {
   background: transparent;
   color: var(--color-charcoal);
