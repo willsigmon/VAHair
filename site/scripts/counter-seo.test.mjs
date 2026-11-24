@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import test from 'node:test';
 
 // Run after `npm run build`. Set SITE_URL to verify a running or deployed site.
@@ -40,11 +40,22 @@ for (const path of ['/', '/about', '/services', '/book', '/contact', '/faq', '/p
     assert.equal(canonicals.length, 1);
     assert.equal(canonicals[0][1], expected);
     assert.match(page, /<meta name="description" content="[^"]+"/);
-    assert.match(page, /<meta property="og:image" content="https:\/\/vahair\.studio\/og\.png/);
+    // The homepage shares the looping animation and its poster; every other page keeps its generated card.
+    const isHome = path === '/';
+    const ogImage = isHome ? 'https://vahair.studio/share/og-v1.jpg"' : 'https://vahair.studio/og.png';
+    assert.ok(page.includes(`<meta property="og:image" content="${ogImage}`), `${path} og:image`);
+    assert.equal(page.includes('<meta property="og:video" content="https://vahair.studio/share/og-v1.mp4"'), isHome);
     assert.match(page, /<meta name="robots" content="index, follow"/);
     assert.equal([...page.matchAll(/<h1(?:\s|>)/g)].length, 1);
   });
 }
+
+test('homepage share video and poster exist where the metadata points', async () => {
+  for (const file of ['og-v1.mp4', 'og-v1.jpg']) {
+    const { size } = await stat(new URL(`../public/share/${file}`, import.meta.url));
+    assert.ok(size > 0, `public/share/${file} is not empty`);
+  }
+});
 
 test('booking embed retains the approved appointment allowlist and owner', async () => {
   const page = await pageHtml('/book');

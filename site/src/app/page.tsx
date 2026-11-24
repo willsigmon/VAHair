@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { pageMetadata } from '@/lib/seo';
+import { DEFAULT_DESCRIPTION, pageMetadata } from '@/lib/seo';
 import { getHomepageStylists } from '@/lib/data/stylists';
 import PriceList from '@/components/PriceList';
 import ReviewsCarousel from '@/components/ReviewsCarousel';
 
 export const metadata: Metadata = pageMetadata(
   'Virginia Page & Co. Hair Studio | Rolesville, NC Hair Salon',
-  '/'
+  '/',
+  DEFAULT_DESCRIPTION,
+  { animatedShare: true }
 );
 
 export default function HomePage() {
