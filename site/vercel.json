@@ -6,6 +6,26 @@
       "has": [{ "type": "host", "value": "www.vahair.studio" }],
       "destination": "https://vahair.studio/:path*",
       "permanent": true
+    },
+    {
+      "source": "/appointments",
+      "destination": "/book",
+      "permanent": true
+    },
+    {
+      "source": "/schedule-1",
+      "destination": "/book",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services-old",
+      "destination": "/services",
+      "permanent": true
     }
   ],
   "headers": [

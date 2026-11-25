@@ -120,3 +120,19 @@ test('services API omits retired services while preserving men and women', { ski
   assert.ok(services.some(service => service.name.startsWith("Women's Haircut")));
   assert.doesNotMatch(JSON.stringify(services), /children|kids|brazilian blowout|88812446|88812787/i);
 });
+
+test('vercel.json permanently redirects legacy Squarespace booking and content paths', async () => {
+  const vercelConfig = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
+  const redirects = vercelConfig.redirects ?? [];
+  for (const [source, destination] of [
+    ['/appointments', '/book'],
+    ['/schedule-1', '/book'],
+    ['/home', '/'],
+    ['/services-old', '/services'],
+  ]) {
+    assert.ok(
+      redirects.some((r) => r.source === source && r.destination === destination && r.permanent === true),
+      `Missing permanent redirect ${source} -> ${destination}`
+    );
+  }
+});
